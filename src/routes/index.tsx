@@ -115,7 +115,11 @@ function QuoteModal({ onClose }: { onClose: () => void }) {
         >
           Email this quote request
         </a>
-        <a className="btn btn-ghost" style={{ marginTop: "10px" }} href={`tel:${PHONE_TEL}`}>
+        <a
+          className="btn btn-ghost"
+          style={{ marginTop: "10px", color: "var(--ink, #181410)", borderColor: "rgba(0,0,0,.35)" }}
+          href={`tel:${PHONE_TEL}`}
+        >
           Or call {PHONE}
         </a>
       </div>
