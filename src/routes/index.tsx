@@ -207,9 +207,9 @@ function Index() {
               booking.
             </p>
             <div className="hero-actions">
-              <a href="#booking" className="btn btn-primary">
-                Book a session
-              </a>
+              <button className="btn btn-primary" onClick={() => setQuoteOpen(true)}>
+                Get a quotation
+              </button>
               <a href="#design" className="btn btn-ghost">
                 See the price list ↓
               </a>
@@ -444,10 +444,21 @@ function Index() {
                     received.
                   </p>
                 </div>
-                <a href="#top" className="btn btn-primary">
-                  Back to top ↑
-                </a>
+                <button className="btn btn-primary" onClick={() => setQuoteOpen(true)}>
+                  Get a quotation
+                </button>
               </div>
+            </div>
+
+            <div className="contact-cards reveal">
+              <a className="contact-card" href={`tel:${PHONE_TEL}`}>
+                <span className="cc-label">Call / WhatsApp</span>
+                <span className="cc-value">{PHONE}</span>
+              </a>
+              <a className="contact-card" href={`mailto:${EMAIL}`}>
+                <span className="cc-label">Email</span>
+                <span className="cc-value">{EMAIL}</span>
+              </a>
             </div>
           </div>
         </section>
