@@ -1,0 +1,545 @@
+
+  :root{
+    --ink:#0E1A30;
+    --navy:#152C52;
+    --navy-2:#1C3B6E;
+    --paper:#F3EEE1;
+    --paper-2:#E9E0C9;
+    --gold-light:#F5CE72;
+    --gold:#E3A93C;
+    --gold-deep:#A8721E;
+    --text:#1B2233;
+    --muted-dark:#5B5C6B;
+    --muted-light:#B7C0D6;
+    --line:rgba(14,26,48,0.12);
+    --line-dark:rgba(245,206,114,0.25);
+    --radius:2px;
+    --maxw:1120px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--text);
+    font-family:'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .display{
+    font-family:'Anton', 'Inter', sans-serif;
+    font-weight:400;
+    letter-spacing:0.01em;
+    text-transform:uppercase;
+  }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 clamp(20px,5vw,48px);
+  }
+
+  /* ---------- focus ---------- */
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--gold);
+    outline-offset:3px;
+  }
+
+  /* ---------- NAV ---------- */
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:var(--ink);
+    border-bottom:1px solid var(--line-dark);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px clamp(20px,5vw,48px);
+    max-width:var(--maxw); margin:0 auto;
+  }
+  .brand{ display:flex; align-items:center; text-decoration:none; }
+  .brand-logo{ height:40px; width:auto; display:block; }
+  nav.links{ display:flex; align-items:center; gap:clamp(16px,3vw,34px); }
+  nav.links a{
+    color:var(--muted-light);
+    text-decoration:none;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    position:relative;
+    padding:6px 0;
+    transition:color .2s ease;
+  }
+  nav.links a:hover{ color:var(--paper); }
+  nav.links a::after{
+    content:"";
+    position:absolute; left:0; right:100%; bottom:0;
+    height:2px; background:var(--gold);
+    transition:right .25s ease;
+  }
+  nav.links a:hover::after{ right:0; }
+  .nav-cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--gold);
+    color:var(--ink) !important;
+    font-weight:700 !important;
+    padding:9px 16px;
+    border-radius:1px;
+    text-transform:uppercase;
+    font-size:12px !important;
+    letter-spacing:0.06em;
+  }
+  .nav-cta::after{ display:none; }
+  .nav-cta:hover{ background:var(--gold-light); }
+  .nav-toggle{ display:none; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(ellipse 900px 500px at 85% -10%, rgba(227,169,60,0.16), transparent 60%),
+      linear-gradient(180deg, var(--ink), var(--navy) 70%, var(--navy-2));
+    color:var(--paper);
+    padding:clamp(64px,12vw,120px) 0 clamp(56px,9vw,96px);
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid var(--line-dark);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(245,206,114,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,206,114,0.05) 1px, transparent 1px);
+    background-size:64px 64px;
+    mask-image:linear-gradient(180deg, transparent, black 15%, black 70%, transparent);
+    pointer-events:none;
+  }
+  .hero-inner{ position:relative; z-index:1; }
+  .eyebrow-tag{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--gold);
+    color:var(--ink);
+    font-family:'IBM Plex Mono',monospace;
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:0.08em;
+    padding:7px 14px 7px 16px;
+    clip-path:polygon(0 0, 100% 0, 94% 50%, 100% 100%, 0 100%);
+    margin-bottom:28px;
+  }
+  h1.hero-title{
+    margin:0;
+    font-size:clamp(46px, 8vw, 96px);
+    line-height:0.94;
+    max-width:14ch;
+  }
+  h1.hero-title .accent{ color:var(--gold); }
+  .hero-sub{
+    margin:28px 0 0;
+    max-width:46ch;
+    font-size:clamp(15px,1.6vw,18px);
+    line-height:1.65;
+    color:var(--muted-light);
+  }
+  .hero-actions{
+    margin-top:40px;
+    display:flex; flex-wrap:wrap; gap:14px; align-items:center;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:14px 26px;
+    font-weight:700;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    text-decoration:none;
+    border-radius:1px;
+    transition:transform .2s ease, background .2s ease, box-shadow .2s ease;
+    border:1px solid transparent;
+    cursor:pointer;
+  }
+  .btn-primary{ background:var(--gold); color:var(--ink); }
+  .btn-primary:hover{ background:var(--gold-light); transform:translateY(-2px); }
+  .btn-ghost{ border-color:var(--line-dark); color:var(--paper); }
+  .btn-ghost:hover{ border-color:var(--gold); color:var(--gold); }
+
+  .hero-strip{
+    margin-top:64px;
+    display:flex; flex-wrap:wrap; gap:0;
+    border-top:1px solid var(--line-dark);
+    border-bottom:1px solid var(--line-dark);
+  }
+  .hero-strip div{
+    flex:1 1 160px;
+    padding:18px 4px 18px 0;
+    border-right:1px solid var(--line-dark);
+  }
+  .hero-strip div:last-child{ border-right:none; }
+  .hero-strip b{
+    display:block;
+    font-family:'Anton',sans-serif;
+    font-size:22px;
+    color:var(--gold);
+  }
+  .hero-strip span{
+    display:block;
+    margin-top:4px;
+    font-size:12px;
+    color:var(--muted-light);
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+  }
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{ padding:clamp(56px,9vw,96px) 0; }
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:24px;
+    margin-bottom:44px;
+    flex-wrap:wrap;
+  }
+  .kicker{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+    display:flex; align-items:center; gap:10px;
+  }
+  .kicker::before{
+    content:""; width:26px; height:2px; background:var(--gold-deep);
+  }
+  h2.section-title{
+    margin:10px 0 0;
+    font-size:clamp(32px,4.4vw,52px);
+    color:var(--ink);
+    line-height:1;
+  }
+  .section-note{
+    max-width:34ch;
+    font-size:14px;
+    color:var(--muted-dark);
+    line-height:1.6;
+    padding-bottom:6px;
+  }
+
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* ---------- RIBBON PRICE ROWS ---------- */
+  .price-list{ display:flex; flex-direction:column; }
+  .price-row{
+    display:grid;
+    grid-template-columns:44px 1fr auto;
+    align-items:center;
+    gap:18px;
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .price-row:first-child{ border-top:1px solid var(--line); }
+  .ribbon{
+    width:38px; height:20px;
+    background:linear-gradient(90deg, var(--gold-light), var(--gold) 70%, var(--gold-deep));
+    clip-path:polygon(0 0, 82% 0, 100% 50%, 82% 100%, 0 100%);
+    flex:0 0 auto;
+    transition:width .25s ease;
+  }
+  .price-row:hover .ribbon{ width:46px; }
+  .price-label{
+    font-weight:700;
+    font-size:clamp(14px,2vw,17px);
+    letter-spacing:0.01em;
+    color:var(--ink);
+  }
+  .price-label small{
+    display:block;
+    font-family:'Inter',sans-serif;
+    font-weight:500;
+    font-size:12px;
+    color:var(--muted-dark);
+    margin-top:3px;
+    letter-spacing:0;
+    text-transform:none;
+  }
+  .price-value{
+    font-family:'IBM Plex Mono',monospace;
+    font-weight:700;
+    font-size:clamp(15px,2vw,19px);
+    color:var(--gold-deep);
+    white-space:nowrap;
+    text-align:right;
+  }
+  .price-value sup{
+    font-size:10px;
+    font-weight:600;
+    color:var(--muted-dark);
+    margin-left:4px;
+    text-transform:uppercase;
+  }
+
+  /* ---------- SIZE RULER (design/fix tiers) ---------- */
+  .ruler-block{
+    margin-top:48px;
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    padding:clamp(20px,4vw,36px);
+  }
+  .ruler-head{
+    display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px;
+    margin-bottom:22px;
+  }
+  .ruler-head h3{
+    margin:0; font-family:'Anton',sans-serif; font-size:19px; color:var(--ink); letter-spacing:0.02em;
+  }
+  .ruler-head p{ margin:0; font-size:12.5px; color:var(--muted-dark); }
+  .ruler{
+    position:relative;
+    height:6px;
+    background:var(--line);
+    margin:0 6px 30px;
+  }
+  .ruler-fill{
+    position:absolute; inset:0;
+    background:linear-gradient(90deg, var(--gold-light), var(--gold-deep));
+  }
+  .ruler-ticks{ display:flex; justify-content:space-between; }
+  .tick{ position:relative; flex:1; text-align:center; }
+  .tick:first-child{ text-align:left; }
+  .tick:last-child{ text-align:right; }
+  .tick::before{
+    content:""; position:absolute; top:-30px; left:50%; width:2px; height:10px; background:var(--gold-deep);
+  }
+  .tick:first-child::before{ left:0; }
+  .tick:last-child::before{ left:auto; right:0; }
+  .tick-mm{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted-dark); }
+  .tier-cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+  }
+  .tier-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:16px;
+  }
+  .tier-card .r{ font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:20px; color:var(--gold-deep); }
+  .tier-card .mm{ font-size:12px; color:var(--muted-dark); margin-top:4px; }
+
+  /* ---------- PHOTOGRAPHY GRID (dark) ---------- */
+  .dark-section{
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .dark-section .kicker{ color:var(--gold); }
+  .dark-section .kicker::before{ background:var(--gold); }
+  .dark-section h2.section-title{ color:var(--paper); }
+  .dark-section .section-note{ color:var(--muted-light); }
+
+  .shoot-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line-dark);
+    border:1px solid var(--line-dark);
+  }
+  .shoot-card{
+    background:var(--navy);
+    padding:28px 22px;
+    display:flex; flex-direction:column; gap:16px; min-height:190px;
+    transition:background .2s ease;
+  }
+  .shoot-card:hover{ background:var(--navy-2); }
+  .shoot-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--gold);
+    letter-spacing:0.08em;
+  }
+  .shoot-name{
+    font-family:'Anton',sans-serif;
+    font-size:19px;
+    line-height:1.15;
+    color:var(--paper);
+    text-transform:uppercase;
+    margin-top:auto;
+  }
+  .shoot-price{
+    font-family:'IBM Plex Mono',monospace;
+    font-weight:600;
+    font-size:15px;
+    color:var(--gold-light);
+  }
+  .shoot-price sup{ font-size:10px; color:var(--muted-light); margin-left:4px; }
+
+  .web-strip{
+    margin-top:1px;
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    background:var(--navy);
+    border:1px solid var(--line-dark);
+    border-top:none;
+    padding:20px 24px;
+  }
+  .web-strip .l{ display:flex; align-items:center; gap:14px; }
+  .web-strip .l .ribbon{ width:30px; }
+  .web-strip .name{ font-family:'Anton',sans-serif; font-size:16px; letter-spacing:0.03em; color:var(--paper); }
+  .web-strip .desc{ font-size:12.5px; color:var(--muted-light); margin-top:2px; }
+  .web-strip .price{ font-family:'IBM Plex Mono',monospace; font-weight:700; color:var(--gold-light); font-size:17px; }
+
+  /* ---------- FILM & WEDDINGS ---------- */
+  .split{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:clamp(24px,4vw,56px);
+  }
+  .split-col h3{
+    font-family:'Anton',sans-serif;
+    font-size:15px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+    margin:0 0 18px;
+    padding-bottom:10px;
+    border-bottom:2px solid var(--ink);
+  }
+  .featured-row{
+    position:relative;
+    background:var(--ink);
+    color:var(--paper);
+    padding:22px 20px;
+    display:grid;
+    grid-template-columns:44px 1fr auto;
+    align-items:center;
+    gap:18px;
+    margin:6px 0 20px;
+  }
+  .featured-row .ribbon{ background:linear-gradient(90deg, var(--gold-light), var(--gold)); }
+  .featured-row .price-label{ color:var(--paper); }
+  .featured-row .price-value{ color:var(--gold-light); }
+  .featured-tag{
+    position:absolute; top:-11px; right:16px;
+    background:var(--gold);
+    color:var(--ink);
+    font-family:'IBM Plex Mono',monospace;
+    font-weight:700;
+    font-size:10px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:4px 10px;
+  }
+
+  /* ---------- BOOKING / PAYMENT ---------- */
+  .booking{
+    background:var(--navy);
+    color:var(--paper);
+    border-top:1px solid var(--line-dark);
+    padding:clamp(56px,9vw,96px) 0;
+  }
+  .booking-grid{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:clamp(24px,4vw,48px);
+    align-items:stretch;
+  }
+  .ticket{
+    background:var(--ink);
+    border:1px dashed var(--line-dark);
+    padding:clamp(24px,4vw,36px);
+    position:relative;
+  }
+  .ticket h3{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin:0 0 18px;
+  }
+  .ticket dl{ margin:0; }
+  .ticket dt{
+    font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted-light); margin-top:14px;
+  }
+  .ticket dt:first-child{ margin-top:0; }
+  .ticket dd{
+    margin:4px 0 0; font-family:'IBM Plex Mono',monospace; font-size:16px; font-weight:600; color:var(--paper);
+  }
+  .notice{
+    background:var(--paper);
+    color:var(--ink);
+    padding:clamp(24px,4vw,36px);
+    display:flex; flex-direction:column; justify-content:space-between; gap:20px;
+  }
+  .notice h3{
+    font-family:'Anton',sans-serif; font-size:22px; margin:0; letter-spacing:0.01em;
+  }
+  .notice p{ font-size:14.5px; line-height:1.65; color:var(--muted-dark); margin:0; }
+  .notice .btn-primary{ align-self:flex-start; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink);
+    color:var(--muted-light);
+    padding:32px 0;
+    border-top:1px solid var(--line-dark);
+  }
+  .foot-row{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+    font-size:12.5px;
+  }
+  .foot-row .brand-logo{ height:26px; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:860px){
+    .shoot-grid{ grid-template-columns:repeat(2,1fr); }
+    .split{ grid-template-columns:1fr; }
+    .booking-grid{ grid-template-columns:1fr; }
+    .tier-cards{ grid-template-columns:1fr; }
+  }
+  @media (max-width:700px){
+    nav.links{
+      position:fixed; top:64px; right:0; bottom:0; z-index:40;
+      width:min(320px,86vw);
+      background:var(--ink);
+      flex-direction:column; align-items:flex-start;
+      padding:28px clamp(20px,5vw,48px);
+      transform:translateX(100%);
+      transition:transform .3s ease;
+      border-left:1px solid var(--line-dark);
+      overflow-y:auto;
+    }
+    nav.links.open{ transform:translateX(0); }
+    nav.links a{ font-size:16px; padding:12px 0; width:100%; border-bottom:1px solid var(--line-dark); }
+    .nav-cta{ margin-top:10px; }
+    .nav-toggle{
+      display:flex; flex-direction:column; gap:5px;
+      background:none; border:none; cursor:pointer; padding:8px;
+    }
+    .nav-toggle span{ width:22px; height:2px; background:var(--paper); }
+    .hero-strip div{ flex:1 1 45%; }
+  }
+  @media (max-width:560px){
+    .shoot-grid{ grid-template-columns:1fr; }
+    .price-row{ grid-template-columns:32px 1fr auto; gap:12px; }
+    .ribbon{ width:28px; }
+  }
+
+/* ---------- WORDMARK ---------- */
+.brand-word{
+  font-family:'Anton','Inter',sans-serif;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  font-size:20px;
+  color:var(--paper);
+  line-height:1;
+}
+.brand-word em{ font-style:normal; color:var(--gold); }
+footer .brand-word{ font-size:16px; }
