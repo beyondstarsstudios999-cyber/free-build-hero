@@ -38,8 +38,94 @@ const Wordmark = () => (
   <img src={logoAsset.url} alt="BeyondStars Studios" className="brand-logo" />
 );
 
+const PHONE = "067 233 8490";
+const PHONE_TEL = "+27672338490";
+const EMAIL = "hilton@beyondstars.co.za";
+
+const QUOTE_SERVICES: Array<[string, number, string?]> = [
+  ["Banner Design", 300],
+  ["Album Artwork", 450],
+  ["Flyer / Poster Design", 250],
+  ["Welcome Board / Business Card", 150],
+  ["Large-format Design (100–500mm)", 250],
+  ["Large-format Design (500–1000mm)", 450],
+  ["Large-format Design (1000–3000mm)", 600],
+  ["Studio Session", 1200, "/hr"],
+  ["Kids Photoshoot", 750, "/hr"],
+  ["Adult Photoshoot", 1200, "/hr"],
+  ["Corporate Portraits", 5700, "/hr"],
+  ["Website (starting rate)", 1200, "+"],
+  ["Music Video", 6000, "+"],
+  ["Wedding Invitation Motion", 500],
+  ["Wedding Photography Only", 3500, "/hr"],
+  ["Wedding Videography Only", 5000, "/hr"],
+  ["Wedding Photo + Video (6 hrs)", 9000],
+];
+
+const formatR = (n: number) => `R${n.toLocaleString("en-ZA").replace(/,/g, " ")}`;
+
+function QuoteModal({ onClose }: { onClose: () => void }) {
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+  const toggle = (label: string) =>
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(label)) next.delete(label);
+      else next.add(label);
+      return next;
+    });
+  const total = QUOTE_SERVICES.filter(([l]) => selected.has(l)).reduce((s, [, p]) => s + p, 0);
+  const chosen = QUOTE_SERVICES.filter(([l]) => selected.has(l));
+  const summary = chosen.map(([l, p, suffix]) => `${l} — ${formatR(p)}${suffix ?? ""}`).join("\n");
+  const mailBody = encodeURIComponent(
+    `Hi BeyondStars Studios,\n\nI'd like a quotation for:\n\n${summary || "(services)"}\n\nEstimated total: ${formatR(total)}\n\nThanks!`,
+  );
+
+  return (
+    <div className="modal-backdrop" onClick={onClose} role="dialog" aria-modal="true" aria-label="Get a quotation">
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
+        <button className="modal-close" onClick={onClose} aria-label="Close">
+          ×
+        </button>
+        <h3 className="display">Get a quotation</h3>
+        <p className="modal-sub">Tick what you need — your estimate adds up below, then send it straight to us.</p>
+        <div className="quote-list">
+          {QUOTE_SERVICES.map(([label, price, suffix]) => (
+            <label key={label} className={selected.has(label) ? "quote-item selected" : "quote-item"}>
+              <span className="qi-label">
+                <input type="checkbox" checked={selected.has(label)} onChange={() => toggle(label)} />
+                {label}
+              </span>
+              <span className="qi-price">
+                {formatR(price)}
+                {suffix ?? ""}
+              </span>
+            </label>
+          ))}
+        </div>
+        <div className="quote-total">
+          <span>Estimated total</span>
+          <b className="mono">{formatR(total)}</b>
+        </div>
+        <p className="quote-note">
+          Hourly rates are billed per hour booked — final quote confirmed by email.
+        </p>
+        <a
+          className="btn btn-primary"
+          href={`mailto:${EMAIL}?subject=${encodeURIComponent("Quotation request — BeyondStars Studios")}&body=${mailBody}`}
+        >
+          Email this quote request
+        </a>
+        <a className="btn btn-ghost" style={{ marginTop: "10px" }} href={`tel:${PHONE_TEL}`}>
+          Or call {PHONE}
+        </a>
+      </div>
+    </div>
+  );
+}
+
 function Index() {
   const [navOpen, setNavOpen] = useState(false);
+  const [quoteOpen, setQuoteOpen] = useState(false);
 
   useEffect(() => {
     const els = Array.from(document.querySelectorAll<HTMLElement>(".reveal"));
