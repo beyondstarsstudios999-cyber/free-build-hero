@@ -176,7 +176,14 @@ function Index() {
             <a href="#photography">Photography</a>
             <a href="#film">Film &amp; Weddings</a>
             <a href="#booking">Booking</a>
-            <a href="#booking" className="nav-cta">
+            <a
+              href="#quote"
+              className="nav-cta"
+              onClick={(e) => {
+                e.preventDefault();
+                setQuoteOpen(true);
+              }}
+            >
               Get a quote
             </a>
           </nav>
