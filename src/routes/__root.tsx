@@ -77,21 +77,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "BeyondStars Studios" },
+      {
+        name: "description",
+        content:
+          "BeyondStars Studios — graphic design, photography, videography and wedding packages with clear 2026 rates in ZAR.",
+      },
+      { property: "og:title", content: "BeyondStars Studios" },
+      {
+        property: "og:description",
+        content:
+          "Design, print, photography, film and wedding rates — priced plainly for the 2026 season.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
     ],
   }),
   shellComponent: RootShell,

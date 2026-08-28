@@ -32,10 +32,10 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+import logoAsset from "../assets/beyondstars-logo.png.asset.json";
+
 const Wordmark = () => (
-  <span className="brand-word">
-    Beyond<em>Stars</em>
-  </span>
+  <img src={logoAsset.url} alt="BeyondStars Studios" className="brand-logo" />
 );
 
 function Index() {
