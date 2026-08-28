@@ -469,9 +469,20 @@ function Index() {
           <a href="#top" className="brand">
             <Wordmark />
           </a>
+          <span>
+            <a href={`tel:${PHONE_TEL}`} style={{ color: "inherit" }}>
+              {PHONE}
+            </a>
+            {" · "}
+            <a href={`mailto:${EMAIL}`} style={{ color: "inherit" }}>
+              {EMAIL}
+            </a>
+          </span>
           <span>© 2026 BeyondStars Studios. Prices in ZAR, valid for the 2026 season.</span>
         </div>
       </footer>
+
+      {quoteOpen && <QuoteModal onClose={() => setQuoteOpen(false)} />}
     </>
   );
 }
