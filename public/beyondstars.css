@@ -531,3 +531,15 @@
     .price-row{ grid-template-columns:32px 1fr auto; gap:12px; }
     .ribbon{ width:28px; }
   }
+
+/* ---------- WORDMARK ---------- */
+.brand-word{
+  font-family:'Anton','Inter',sans-serif;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  font-size:20px;
+  color:var(--paper);
+  line-height:1;
+}
+.brand-word em{ font-style:normal; color:var(--gold); }
+footer .brand-word{ font-size:16px; }
