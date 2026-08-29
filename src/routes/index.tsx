@@ -32,9 +32,8 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const ASSET_ORIGIN = "https://free-build-hero.lovable.app";
-const LOGO_URL = `${ASSET_ORIGIN}/__l5e/assets-v1/d4aba80c-49e6-45cc-a7f9-758e4e83cf2c/beyondstars-logo.png`;
-const WHATSAPP_ICON_URL = `${ASSET_ORIGIN}/__l5e/assets-v1/bd0cd43c-a30c-40f4-84bc-7525f8aa6682/whatsapp-icon.png`;
+const LOGO_URL = "/assets/beyondstars-logo.png";
+const WHATSAPP_ICON_URL = "/assets/whatsapp-icon.png";
 
 const Wordmark = () => (
   <img src={LOGO_URL} alt="BeyondStars Studios" className="brand-logo" />
