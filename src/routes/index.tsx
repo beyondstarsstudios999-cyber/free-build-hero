@@ -33,6 +33,7 @@ export const Route = createFileRoute("/")({
 });
 
 import logoAsset from "../assets/beyondstars-logo.png.asset.json";
+import whatsappAsset from "../assets/whatsapp-icon.png.asset.json";
 
 const Wordmark = () => (
   <img src={logoAsset.url} alt="BeyondStars Studios" className="brand-logo" />
@@ -40,6 +41,7 @@ const Wordmark = () => (
 
 const PHONE = "067 233 8490";
 const PHONE_TEL = "+27672338490";
+const WA_LINK = "https://wa.me/27672338490";
 const EMAIL = "hilton@beyondstars.co.za";
 
 const QUOTE_SERVICES: Array<[string, number, string?]> = [
@@ -456,8 +458,15 @@ function Index() {
 
             <div className="contact-cards reveal">
               <a className="contact-card" href={`tel:${PHONE_TEL}`}>
-                <span className="cc-label">Call / WhatsApp</span>
+                <span className="cc-label">Call</span>
                 <span className="cc-value">{PHONE}</span>
+              </a>
+              <a className="contact-card" href={WA_LINK} target="_blank" rel="noopener noreferrer">
+                <span className="cc-label">WhatsApp</span>
+                <span className="cc-value cc-whatsapp">
+                  <img src={whatsappAsset.url} alt="WhatsApp" />
+                  {PHONE}
+                </span>
               </a>
               <a className="contact-card" href={`mailto:${EMAIL}`}>
                 <span className="cc-label">Email</span>
@@ -485,6 +494,11 @@ function Index() {
           <span>© 2026 BeyondStars Studios. Prices in ZAR, valid for the 2026 season.</span>
         </div>
       </footer>
+
+      <a className="whatsapp-float" href={WA_LINK} target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <img src={whatsappAsset.url} alt="" />
+        <span>WhatsApp us</span>
+      </a>
 
       {quoteOpen && <QuoteModal onClose={() => setQuoteOpen(false)} />}
     </>
