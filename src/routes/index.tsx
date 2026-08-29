@@ -32,11 +32,11 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-import logoAsset from "../assets/beyondstars-logo.png.asset.json";
-import whatsappAsset from "../assets/whatsapp-icon.png.asset.json";
+const LOGO_URL = "/assets/beyondstars-logo.png";
+const WHATSAPP_ICON_URL = "/assets/whatsapp-icon.png";
 
 const Wordmark = () => (
-  <img src={logoAsset.url} alt="BeyondStars Studios" className="brand-logo" />
+  <img src={LOGO_URL} alt="BeyondStars Studios" className="brand-logo" />
 );
 
 const PHONE = "067 233 8490";
@@ -464,7 +464,7 @@ function Index() {
               <a className="contact-card" href={WA_LINK} target="_blank" rel="noopener noreferrer">
                 <span className="cc-label">WhatsApp</span>
                 <span className="cc-value cc-whatsapp">
-                  <img src={whatsappAsset.url} alt="WhatsApp" />
+                  <img src={WHATSAPP_ICON_URL} alt="WhatsApp" />
                   {PHONE}
                 </span>
               </a>
@@ -496,7 +496,7 @@ function Index() {
       </footer>
 
       <a className="whatsapp-float" href={WA_LINK} target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-        <img src={whatsappAsset.url} alt="" />
+        <img src={WHATSAPP_ICON_URL} alt="" />
         <span>WhatsApp us</span>
       </a>
 
