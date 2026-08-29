@@ -108,7 +108,7 @@
     background:
       linear-gradient(100deg, rgba(16,17,26,0.97) 0%, rgba(16,17,26,0.92) 38%, rgba(16,17,26,0.55) 68%, rgba(16,17,26,0.35) 100%),
       linear-gradient(0deg, rgba(16,17,26,0.9) 0%, transparent 30%, transparent 75%, rgba(16,17,26,0.75) 100%),
-      url("/__l5e/assets-v1/8356a61c-fbf1-47c3-a0d0-4cac880a2d75/beyondstars-hero-bg.webp") right center / cover no-repeat,
+      url("https://free-build-hero.lovable.app/__l5e/assets-v1/8356a61c-fbf1-47c3-a0d0-4cac880a2d75/beyondstars-hero-bg.webp") right center / cover no-repeat,
       linear-gradient(180deg, var(--ink), var(--navy));
     color:var(--paper);
     padding:clamp(64px,12vw,120px) 0 clamp(56px,9vw,96px);
