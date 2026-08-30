@@ -106,27 +106,49 @@
   /* ---------- HERO ---------- */
   .hero{
     background:
-      linear-gradient(100deg, rgba(16,17,26,0.97) 0%, rgba(16,17,26,0.92) 38%, rgba(16,17,26,0.55) 68%, rgba(16,17,26,0.35) 100%),
-      linear-gradient(0deg, rgba(16,17,26,0.9) 0%, transparent 30%, transparent 75%, rgba(16,17,26,0.75) 100%),
-      url("/assets/beyondstars-hero-bg.webp") right center / cover no-repeat,
-      linear-gradient(180deg, var(--ink), var(--navy));
-    color:var(--paper);
+      linear-gradient(90deg, rgba(255,214,64,0.88) 0%, rgba(255,214,64,0.55) 34%, rgba(255,214,64,0.0) 62%),
+      linear-gradient(0deg, rgba(255,190,30,0.55) 0%, transparent 26%),
+      url("/assets/hero-sky.png") center / cover no-repeat,
+      #f7c948;
+    color:var(--ink);
     padding:clamp(64px,12vw,120px) 0 clamp(56px,9vw,96px);
     position:relative;
     overflow:hidden;
-    border-bottom:1px solid var(--line-dark);
+    border-bottom:1px solid var(--line);
   }
   .hero::before{
     content:"";
     position:absolute; inset:0;
     background-image:
-      linear-gradient(rgba(245,206,114,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(245,206,114,0.05) 1px, transparent 1px);
+      linear-gradient(rgba(120,80,0,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(120,80,0,0.06) 1px, transparent 1px);
     background-size:64px 64px;
     mask-image:linear-gradient(180deg, transparent, black 15%, black 70%, transparent);
     pointer-events:none;
   }
-  .hero-inner{ position:relative; z-index:1; }
+  .hero-inner{ position:relative; z-index:2; }
+  .hero-rider{
+    position:absolute;
+    z-index:1;
+    right:-4%;
+    bottom:0;
+    width:clamp(320px, 44vw, 640px);
+    pointer-events:none;
+    animation:hero-wiggle 5.2s ease-in-out infinite;
+    transform-origin:62% 80%;
+    filter:drop-shadow(0 28px 40px rgba(120,60,0,0.35));
+  }
+  .hero-rider img{ width:100%; height:auto; display:block; }
+  @keyframes hero-wiggle{
+    0%   { transform:translate3d(0,0,0) rotate(0deg); }
+    25%  { transform:translate3d(0,-22px,0) rotate(-2.4deg); }
+    50%  { transform:translate3d(6px,-4px,0) rotate(0.8deg); }
+    75%  { transform:translate3d(-4px,-18px,0) rotate(2.2deg); }
+    100% { transform:translate3d(0,0,0) rotate(0deg); }
+  }
+  @media (max-width: 900px){
+    .hero-rider{ width:clamp(240px, 60vw, 380px); right:-8%; opacity:0.92; }
+  }
   .eyebrow-tag{
     display:inline-flex; align-items:center; gap:10px;
     background:var(--gold);
