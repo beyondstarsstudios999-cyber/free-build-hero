@@ -167,13 +167,13 @@
     line-height:0.94;
     max-width:14ch;
   }
-  h1.hero-title .accent{ color:var(--gold); }
+  h1.hero-title .accent{ color:var(--gold-deep); }
   .hero-sub{
     margin:28px 0 0;
     max-width:46ch;
     font-size:clamp(15px,1.6vw,18px);
     line-height:1.65;
-    color:var(--muted-light);
+    color:rgba(14,26,48,0.82);
   }
   .hero-actions{
     margin-top:40px;

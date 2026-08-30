@@ -198,6 +198,9 @@ function Index() {
 
       <main id="top">
         <section className="hero">
+          <div className="hero-rider" aria-hidden="true">
+            <img src="/assets/hero-rider.png" alt="" />
+          </div>
           <div className="wrap hero-inner">
             <span className="eyebrow-tag">PRICE LIST — 2026</span>
             <h1 className="hero-title display">
