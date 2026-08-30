@@ -194,32 +194,34 @@
   }
   .btn-primary{ background:var(--gold); color:var(--ink); }
   .btn-primary:hover{ background:var(--gold-light); transform:translateY(-2px); }
+  .hero .btn-ghost{ border-color:rgba(14,26,48,0.45); color:var(--ink); }
+  .hero .btn-ghost:hover{ border-color:var(--ink); color:var(--ink); background:rgba(255,255,255,0.25); }
   .btn-ghost{ border-color:var(--line-dark); color:var(--paper); }
   .btn-ghost:hover{ border-color:var(--gold); color:var(--gold); }
 
   .hero-strip{
     margin-top:64px;
     display:flex; flex-wrap:wrap; gap:0;
-    border-top:1px solid var(--line-dark);
-    border-bottom:1px solid var(--line-dark);
+    border-top:1px solid rgba(14,26,48,0.3);
+    border-bottom:1px solid rgba(14,26,48,0.3);
   }
   .hero-strip div{
     flex:1 1 160px;
     padding:18px 4px 18px 0;
-    border-right:1px solid var(--line-dark);
+    border-right:1px solid rgba(14,26,48,0.3);
   }
   .hero-strip div:last-child{ border-right:none; }
   .hero-strip b{
     display:block;
     font-family:'Anton',sans-serif;
     font-size:22px;
-    color:var(--gold);
+    color:var(--ink);
   }
   .hero-strip span{
     display:block;
     margin-top:4px;
     font-size:12px;
-    color:var(--muted-light);
+    color:rgba(14,26,48,0.7);
     text-transform:uppercase;
     letter-spacing:0.05em;
   }
