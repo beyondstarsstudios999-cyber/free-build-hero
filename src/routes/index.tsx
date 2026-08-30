@@ -198,48 +198,50 @@ function Index() {
 
       <main id="top">
         <section className="hero">
-          <div className="hero-rider" aria-hidden="true">
-            <img src="/assets/hero-rider.png" alt="" />
-          </div>
           <div className="wrap hero-inner">
-            <span className="eyebrow-tag">PRICE LIST — 2026</span>
-            <h1 className="hero-title display">
-              Design, shot
-              <br />
-              and framed
-              <br />
-              <span className="accent">beyond the usual.</span>
-            </h1>
-            <p className="hero-sub">
-              BeyondStars Studios is a one-stop creative house — graphic design, photography,
-              videography and weddings, priced plainly below so you know exactly what you're
-              booking.
-            </p>
-            <div className="hero-actions">
-              <button className="btn btn-primary" onClick={() => setQuoteOpen(true)}>
-                Get a quotation
-              </button>
-              <a href="#design" className="btn btn-ghost">
-                See the price list ↓
-              </a>
+            <div className="hero-text">
+              <span className="eyebrow-tag">PRICE LIST — 2026</span>
+              <h1 className="hero-title display">
+                Design, shot
+                <br />
+                and framed
+                <br />
+                <span className="accent">beyond the usual.</span>
+              </h1>
+              <p className="hero-sub">
+                BeyondStars Studios is a one-stop creative house — graphic design, photography,
+                videography and weddings, priced plainly below so you know exactly what you're
+                booking.
+              </p>
+              <div className="hero-actions">
+                <button className="btn btn-primary" onClick={() => setQuoteOpen(true)}>
+                  Get a quotation
+                </button>
+                <a href="#design" className="btn btn-ghost">
+                  See the price list ↓
+                </a>
+              </div>
+              <div className="hero-strip">
+                <div>
+                  <b>7</b>
+                  <span>Design &amp; print rates</span>
+                </div>
+                <div>
+                  <b>5</b>
+                  <span>Photography sessions</span>
+                </div>
+                <div>
+                  <b>5</b>
+                  <span>Film &amp; wedding packages</span>
+                </div>
+                <div>
+                  <b>R150</b>
+                  <span>Starting rate</span>
+                </div>
+              </div>
             </div>
-            <div className="hero-strip">
-              <div>
-                <b>7</b>
-                <span>Design &amp; print rates</span>
-              </div>
-              <div>
-                <b>5</b>
-                <span>Photography sessions</span>
-              </div>
-              <div>
-                <b>5</b>
-                <span>Film &amp; wedding packages</span>
-              </div>
-              <div>
-                <b>R150</b>
-                <span>Starting rate</span>
-              </div>
+            <div className="hero-rider" aria-hidden="true">
+              <img src="/assets/hero-rider.png" alt="" />
             </div>
           </div>
         </section>
