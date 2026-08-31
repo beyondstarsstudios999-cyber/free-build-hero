@@ -177,11 +177,12 @@
   }
   h1.hero-title{
     margin:0;
-    font-size:clamp(46px, 8vw, 96px);
-    line-height:0.94;
-    max-width:14ch;
+    font-size:clamp(40px, 5.4vw, 76px);
+    line-height:0.92;
+    max-width:12ch;
   }
   h1.hero-title .accent{ color:var(--gold-light); }
+
   .hero-sub{
     margin:28px 0 0;
     max-width:46ch;
