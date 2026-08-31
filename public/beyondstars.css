@@ -138,18 +138,38 @@
     flex:0 1 auto;
     width:clamp(520px, 62vw, 1040px);
     pointer-events:none;
-    animation:hero-wiggle 5.2s ease-in-out infinite;
+    animation:hero-wiggle 6.4s cubic-bezier(0.37, 0, 0.63, 1) infinite;
     transform-origin:58% 82%;
+    will-change:transform;
+    backface-visibility:hidden;
+    transform:translateZ(0);
     filter:drop-shadow(0 28px 40px rgba(0,0,0,0.45));
     margin-right:clamp(-14%, -6vw, -4%);
   }
   .hero-rider img{ width:100%; height:auto; display:block; }
+  /* Densely-keyframed sinusoidal path — reads as a seamless video loop,
+     no visible holds or snaps between frames */
   @keyframes hero-wiggle{
-    0%   { transform:translate3d(0,0,0) rotate(0deg); }
-    25%  { transform:translate3d(0,-26px,0) rotate(2.6deg); }
-    50%  { transform:translate3d(-8px,-6px,0) rotate(-0.9deg); }
-    75%  { transform:translate3d(5px,-22px,0) rotate(-2.4deg); }
-    100% { transform:translate3d(0,0,0) rotate(0deg); }
+    0%     { transform:translate3d(0,0,0) rotate(0deg); }
+    6.25%  { transform:translate3d(1px,-7px,0) rotate(0.45deg); }
+    12.5%  { transform:translate3d(2px,-13px,0) rotate(0.85deg); }
+    18.75% { transform:translate3d(2px,-18px,0) rotate(1.2deg); }
+    25%    { transform:translate3d(0,-22px,0) rotate(1.45deg); }
+    31.25% { transform:translate3d(-2px,-24px,0) rotate(1.55deg); }
+    37.5%  { transform:translate3d(-4px,-23px,0) rotate(1.5deg); }
+    43.75% { transform:translate3d(-6px,-20px,0) rotate(1.25deg); }
+    50%    { transform:translate3d(-7px,-15px,0) rotate(0.8deg); }
+    56.25% { transform:translate3d(-7px,-9px,0) rotate(0.2deg); }
+    62.5%  { transform:translate3d(-6px,-4px,0) rotate(-0.5deg); }
+    68.75% { transform:translate3d(-4px,0,0) rotate(-1.1deg); }
+    75%    { transform:translate3d(-2px,3px,0) rotate(-1.55deg); }
+    81.25% { transform:translate3d(0,4px,0) rotate(-1.7deg); }
+    87.5%  { transform:translate3d(1px,3px,0) rotate(-1.5deg); }
+    93.75% { transform:translate3d(1px,1px,0) rotate(-0.9deg); }
+    100%   { transform:translate3d(0,0,0) rotate(0deg); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero-rider{ animation:none; }
   }
   @media (max-width: 900px){
     .hero-inner{ flex-direction:column; align-items:flex-start; gap:8px; }
