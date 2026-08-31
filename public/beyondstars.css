@@ -138,15 +138,17 @@
     flex:0 1 auto;
     width:clamp(520px, 62vw, 1040px);
     pointer-events:none;
-    animation:hero-wiggle 6.4s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+    animation:hero-wiggle 9s cubic-bezier(0.37, 0, 0.63, 1) infinite;
     transform-origin:58% 82%;
     will-change:transform;
     backface-visibility:hidden;
     transform:translateZ(0);
-    filter:drop-shadow(0 28px 40px rgba(0,0,0,0.45));
+    filter:drop-shadow(0 28px 40px rgba(0,0,0,0.35));
     margin-right:clamp(-14%, -6vw, -4%);
   }
-  .hero-rider img{ width:100%; height:auto; display:block; }
+  .hero-rider img,
+  .hero-rider video{ width:100%; height:auto; display:block; background:transparent; }
+
   /* Densely-keyframed sinusoidal path — reads as a seamless video loop,
      no visible holds or snaps between frames */
   @keyframes hero-wiggle{
