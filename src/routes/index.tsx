@@ -206,8 +206,11 @@ function Index() {
                 <br />
                 and framed
                 <br />
-                <span className="accent">beyond the usual.</span>
+                <span className="accent">beyond</span>
+                <br />
+                <span className="accent">the usual.</span>
               </h1>
+
               <p className="hero-sub">
                 BeyondStars Studios is a one-stop creative house — graphic design, photography,
                 videography and weddings, priced plainly below so you know exactly what you're
