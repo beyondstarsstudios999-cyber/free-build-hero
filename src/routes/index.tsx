@@ -244,15 +244,7 @@ function Index() {
               </div>
             </div>
             <div className="hero-rider" aria-hidden="true">
-              <video
-                src="/assets/hero-rider.webm"
-                poster="/assets/hero-rider.png"
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="auto"
-              />
+              <HeroLottie />
             </div>
 
           </div>
