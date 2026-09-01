@@ -251,28 +251,29 @@ function Index() {
                   See the price list ↓
                 </a>
               </div>
+              <div className="hero-strip">
+                <div>
+                  <b>7</b>
+                  <span>Design &amp; print rates</span>
+                </div>
+                <div>
+                  <b>5</b>
+                  <span>Photography sessions</span>
+                </div>
+                <div>
+                  <b>5</b>
+                  <span>Film &amp; wedding packages</span>
+                </div>
+                <div>
+                  <b>R150</b>
+                  <span>Starting rate</span>
+                </div>
+              </div>
             </div>
             <div className="hero-rider" aria-hidden="true">
               <HeroLottie />
             </div>
-            <div className="hero-strip">
-              <div>
-                <b>7</b>
-                <span>Design &amp; print rates</span>
-              </div>
-              <div>
-                <b>5</b>
-                <span>Photography sessions</span>
-              </div>
-              <div>
-                <b>5</b>
-                <span>Film &amp; wedding packages</span>
-              </div>
-              <div>
-                <b>R150</b>
-                <span>Starting rate</span>
-              </div>
-            </div>
+
           </div>
         </section>
 
