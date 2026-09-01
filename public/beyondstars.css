@@ -128,7 +128,7 @@
   }
   .hero-inner{
     position:relative; z-index:2;
-    display:flex; align-items:center; justify-content:space-between;
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
     gap:clamp(24px,4vw,56px);
   }
   .hero-text{ flex:0 1 420px; min-width:0; }
@@ -151,6 +151,7 @@
   .hero-rider video,
   .hero-rider svg{ width:100%; height:auto; display:block; background:transparent; }
   .hero-rider .lottie-holder{ width:100%; aspect-ratio:16/9; }
+  .hero-strip{ flex:1 1 100%; }
 
   @keyframes hero-enter{
     to{ opacity:1; transform:translate3d(0,0,0) scale(1); }
@@ -160,20 +161,20 @@
     .hero-rider{ animation:none; opacity:1; transform:none; }
   }
   @media (max-width: 900px){
-    .hero-inner{ flex-direction:column; align-items:flex-start; gap:8px; }
+    .hero-inner{ flex-direction:column; align-items:flex-start; gap:0; }
     .hero-text{ flex:1 1 auto; width:100%; }
     .hero-rider{
-      width:min(124%, 640px);
+      width:min(118%, 560px);
       max-width:none;
-      margin:-48px -12% 0;
+      margin:-20px -8% 0;
       align-self:center;
-      order:2;
     }
+    .hero-strip{ margin-top:18px; }
   }
   @media (max-width: 480px){
     .hero-rider{
-      width:min(128%, 560px);
-      margin:-36px -10% 0;
+      width:min(122%, 480px);
+      margin:-12px -6% 0;
     }
   }
 
