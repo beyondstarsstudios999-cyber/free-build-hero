@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -38,6 +38,33 @@ const WHATSAPP_ICON_URL = "/assets/whatsapp-icon.png";
 const Wordmark = () => (
   <img src={LOGO_URL} alt="BeyondStars Studios" className="brand-logo" />
 );
+
+function HeroLottie() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let anim: { destroy: () => void } | null = null;
+    let cancelled = false;
+    (async () => {
+      const lottie = (await import("lottie-web")).default;
+      if (cancelled || !ref.current) return;
+      anim = lottie.loadAnimation({
+        container: ref.current,
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        path: "/assets/hero-animation.json",
+        rendererSettings: { progressiveLoad: true, preserveAspectRatio: "xMidYMid meet" },
+      });
+    })();
+    return () => {
+      cancelled = true;
+      anim?.destroy();
+    };
+  }, []);
+
+  return <div className="lottie-holder" ref={ref} />;
+}
 
 const PHONE = "067 233 8490";
 const PHONE_TEL = "+27672338490";
@@ -244,15 +271,7 @@ function Index() {
               </div>
             </div>
             <div className="hero-rider" aria-hidden="true">
-              <video
-                src="/assets/hero-rider.webm"
-                poster="/assets/hero-rider.png"
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="auto"
-              />
+              <HeroLottie />
             </div>
 
           </div>
