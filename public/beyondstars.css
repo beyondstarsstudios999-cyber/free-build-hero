@@ -150,7 +150,7 @@
   .hero-rider img,
   .hero-rider video,
   .hero-rider svg{ width:100%; height:auto; display:block; background:transparent; }
-  .hero-rider .lottie-holder{ width:100%; }
+  .hero-rider .lottie-holder{ width:100%; aspect-ratio:16/9; }
 
   @keyframes hero-enter{
     to{ opacity:1; transform:translate3d(0,0,0) scale(1); }
