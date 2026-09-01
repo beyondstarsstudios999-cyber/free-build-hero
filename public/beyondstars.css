@@ -136,50 +136,37 @@
     position:relative;
     z-index:1;
     flex:0 1 auto;
-    width:clamp(520px, 62vw, 1040px);
+    width:clamp(560px, 70vw, 1240px);
+    max-width:62vw;
     pointer-events:none;
-    animation:hero-wiggle 9s cubic-bezier(0.37, 0, 0.63, 1) infinite;
-    transform-origin:58% 82%;
-    will-change:transform;
+    will-change:transform,opacity;
     backface-visibility:hidden;
-    transform:translateZ(0);
-    filter:drop-shadow(0 28px 40px rgba(0,0,0,0.35));
+    filter:drop-shadow(0 28px 40px rgba(0,0,0,0.30));
     margin-right:clamp(-14%, -6vw, -4%);
+    opacity:0;
+    transform:translate3d(60px,24px,0) scale(0.9);
+    animation:hero-enter 1.15s cubic-bezier(0.16,0.84,0.32,1) 0.15s forwards;
   }
   .hero-rider img,
-  .hero-rider video{ width:100%; height:auto; display:block; background:transparent; }
+  .hero-rider video,
+  .hero-rider svg{ width:100%; height:auto; display:block; background:transparent; }
+  .hero-rider .lottie-holder{ width:100%; }
 
-  /* Densely-keyframed sinusoidal path — reads as a seamless video loop,
-     no visible holds or snaps between frames */
-  @keyframes hero-wiggle{
-    0%     { transform:translate3d(0,0,0) rotate(0deg); }
-    6.25%  { transform:translate3d(1px,-7px,0) rotate(0.45deg); }
-    12.5%  { transform:translate3d(2px,-13px,0) rotate(0.85deg); }
-    18.75% { transform:translate3d(2px,-18px,0) rotate(1.2deg); }
-    25%    { transform:translate3d(0,-22px,0) rotate(1.45deg); }
-    31.25% { transform:translate3d(-2px,-24px,0) rotate(1.55deg); }
-    37.5%  { transform:translate3d(-4px,-23px,0) rotate(1.5deg); }
-    43.75% { transform:translate3d(-6px,-20px,0) rotate(1.25deg); }
-    50%    { transform:translate3d(-7px,-15px,0) rotate(0.8deg); }
-    56.25% { transform:translate3d(-7px,-9px,0) rotate(0.2deg); }
-    62.5%  { transform:translate3d(-6px,-4px,0) rotate(-0.5deg); }
-    68.75% { transform:translate3d(-4px,0,0) rotate(-1.1deg); }
-    75%    { transform:translate3d(-2px,3px,0) rotate(-1.55deg); }
-    81.25% { transform:translate3d(0,4px,0) rotate(-1.7deg); }
-    87.5%  { transform:translate3d(1px,3px,0) rotate(-1.5deg); }
-    93.75% { transform:translate3d(1px,1px,0) rotate(-0.9deg); }
-    100%   { transform:translate3d(0,0,0) rotate(0deg); }
+  @keyframes hero-enter{
+    to{ opacity:1; transform:translate3d(0,0,0) scale(1); }
   }
+
   @media (prefers-reduced-motion: reduce){
-    .hero-rider{ animation:none; }
+    .hero-rider{ animation:none; opacity:1; transform:none; }
   }
   @media (max-width: 900px){
     .hero-inner{ flex-direction:column; align-items:flex-start; gap:8px; }
     .hero-text{ flex:1 1 auto; width:100%; }
     .hero-rider{
-      width:min(118%, 560px);
-      margin-right:-9%;
-      margin-left:-9%;
+      width:min(122%, 620px);
+      max-width:none;
+      margin-right:-11%;
+      margin-left:-11%;
       align-self:center;
       order:2;
     }
