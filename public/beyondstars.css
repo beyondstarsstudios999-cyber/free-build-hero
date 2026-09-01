@@ -131,18 +131,18 @@
     display:flex; align-items:center; justify-content:space-between;
     gap:clamp(24px,4vw,56px);
   }
-  .hero-text{ flex:0 1 470px; min-width:0; }
+  .hero-text{ flex:0 1 420px; min-width:0; }
   .hero-rider{
     position:relative;
     z-index:1;
     flex:0 1 auto;
-    width:clamp(560px, 70vw, 1240px);
-    max-width:62vw;
+    width:clamp(640px, 78vw, 1400px);
+    max-width:72vw;
     pointer-events:none;
     will-change:transform,opacity;
     backface-visibility:hidden;
-    filter:drop-shadow(0 28px 40px rgba(0,0,0,0.30));
-    margin-right:clamp(-14%, -6vw, -4%);
+    filter:drop-shadow(0 32px 48px rgba(0,0,0,0.32));
+    margin-right:clamp(-18%, -10vw, -6%);
     opacity:0;
     transform:translate3d(60px,24px,0) scale(0.9);
     animation:hero-enter 1.15s cubic-bezier(0.16,0.84,0.32,1) 0.15s forwards;
@@ -163,10 +163,10 @@
     .hero-inner{ flex-direction:column; align-items:flex-start; gap:8px; }
     .hero-text{ flex:1 1 auto; width:100%; }
     .hero-rider{
-      width:min(122%, 620px);
+      width:min(138%, 760px);
       max-width:none;
-      margin-right:-11%;
-      margin-left:-11%;
+      margin-right:-14%;
+      margin-left:-14%;
       align-self:center;
       order:2;
     }
