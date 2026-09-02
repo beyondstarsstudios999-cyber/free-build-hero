@@ -43,18 +43,27 @@ function HeroLottie() {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let anim: { destroy: () => void } | null = null;
+    let anim: { destroy: () => void; play: () => void; addEventListener: (e: string, cb: () => void) => void } | null =
+      null;
     let cancelled = false;
     (async () => {
-      const lottie = (await import("lottie-web")).default;
+      const lottie = (await import("lottie-web/build/player/lottie_light")).default;
       if (cancelled || !ref.current) return;
       anim = lottie.loadAnimation({
         container: ref.current,
         renderer: "svg",
         loop: true,
-        autoplay: true,
+        autoplay: false,
         path: "/assets/hero-animation.json",
-        rendererSettings: { progressiveLoad: true, preserveAspectRatio: "xMidYMid meet" },
+        rendererSettings: {
+          progressiveLoad: false,
+          preserveAspectRatio: "xMidYMid meet",
+          imagePreserveAspectRatio: "xMidYMid meet",
+        },
+      });
+      anim.addEventListener("DOMLoaded", () => {
+        ref.current?.parentElement?.classList.add("is-ready");
+        anim?.play();
       });
     })();
     return () => {
