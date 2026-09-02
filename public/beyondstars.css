@@ -547,7 +547,7 @@
     display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
     font-size:12.5px;
   }
-  .foot-row .brand-logo{ height:42px; }
+  .foot-row .brand-logo{ height:56px; }
 
   /* ---------- WHATSAPP ---------- */
   .whatsapp-float{
