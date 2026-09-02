@@ -474,7 +474,7 @@ function Index() {
                   <dt>Bank</dt>
                   <dd>Capitec Bank</dd>
                   <dt>Account number</dt>
-                  <dd>2502 8957 70</dd>
+                  <dd>**** **** **</dd>
                 </dl>
               </div>
               <div className="notice">
