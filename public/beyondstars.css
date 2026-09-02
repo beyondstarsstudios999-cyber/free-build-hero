@@ -161,27 +161,10 @@
     .hero-rider{ animation:none; opacity:1; transform:none; }
   }
   @media (max-width: 900px){
-    .hero-inner{
-      grid-template-columns:1fr;
-      grid-template-rows:auto auto auto;
-      gap:0;
-      align-items:start;
-    }
-    .hero-text{ grid-column:1; grid-row:1; }
-    .hero-rider{
-      grid-column:1; grid-row:2;
-      justify-self:center;
-      width:min(118%, 560px);
-      max-width:none;
-      margin:-20px -8% 0;
-    }
-    .hero-strip{ grid-column:1; grid-row:3; margin-top:18px; }
+    .hero-rider{ width:min(100%, 560px); }
   }
   @media (max-width: 480px){
-    .hero-rider{
-      width:min(122%, 480px);
-      margin:-12px -6% 0;
-    }
+    .hero-rider{ width:min(110%, 480px); margin-left:-5%; margin-right:-5%; }
   }
 
   .eyebrow-tag{
