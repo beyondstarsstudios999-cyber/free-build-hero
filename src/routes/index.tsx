@@ -291,6 +291,12 @@ function Index() {
         <section id="wedding" className="wedding">
           <div className="wrap">
             <div className="wedding-hero reveal">
+              <img
+                className="wedding-bg"
+                src="/assets/white-wedding.png"
+                alt="Bride and groom cutting their white wedding cake"
+              />
+              <div className="wedding-overlay"></div>
               <div className="wedding-copy">
                 <h2 className="wedding-title display">
                   <span className="wt-gold">White</span>
@@ -303,9 +309,6 @@ function Index() {
                 <a href="#wedding-packages" className="btn btn-gold">
                   Book now
                 </a>
-              </div>
-              <div className="wedding-media">
-                <img src="/assets/white-wedding.png" alt="Bride and groom cutting their white wedding cake" />
               </div>
             </div>
 
