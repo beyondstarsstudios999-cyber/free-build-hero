@@ -5,13 +5,13 @@ import type { AnimationItem } from "lottie-web";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "BeyondStars Studios — 2026 Price List" },
+      { title: "BeyondStars Studios — Affordable Prices" },
       {
         name: "description",
         content:
           "Graphic design, photography, videography and wedding packages from BeyondStars Studios. Clear 2026 rates in ZAR, from R150.",
       },
-      { property: "og:title", content: "BeyondStars Studios — 2026 Price List" },
+      { property: "og:title", content: "BeyondStars Studios — Affordable Prices" },
       {
         property: "og:description",
         content:
@@ -285,6 +285,65 @@ function Index() {
               <HeroLottie />
             </div>
 
+          </div>
+        </section>
+
+        <section id="wedding" className="wedding">
+          <div className="wrap">
+            <div className="wedding-hero reveal">
+              <div className="wedding-copy">
+                <h2 className="wedding-title display">
+                  <span className="wt-gold">White</span>
+                  <span className="wt-navy">Wedding</span>
+                </h2>
+                <p className="wedding-sub">
+                  Your big day, captured beautifully. Full photography and videography coverage by
+                  a two-man camera crew — so not a single moment goes unframed.
+                </p>
+                <a href="#wedding-packages" className="btn btn-gold">
+                  Book now
+                </a>
+              </div>
+              <div className="wedding-media">
+                <img src="/assets/white-wedding.png" alt="Bride and groom cutting their white wedding cake" />
+              </div>
+            </div>
+
+            <div className="wedding-packages reveal" id="wedding-packages">
+              <span className="kicker">White Wedding — Photography &amp; Videography</span>
+              <div className="wp-grid">
+                <div className="wp-card">
+                  <span className="wp-tag">Package 1</span>
+                  <div className="wp-price display">R15 000</div>
+                  <ul className="wp-list">
+                    <li>2 cameramen</li>
+                    <li>6 hours of coverage</li>
+                    <li>1 lighting setup</li>
+                    <li>Photo &amp; video highlights</li>
+                  </ul>
+                  <button className="btn btn-primary" onClick={() => setQuoteOpen(true)}>
+                    Book this package
+                  </button>
+                </div>
+                <div className="wp-card featured">
+                  <span className="wp-tag">Package 2 — Most booked</span>
+                  <div className="wp-price display">R22 000</div>
+                  <ul className="wp-list">
+                    <li>2 cameramen</li>
+                    <li>Drone coverage included</li>
+                    <li>2 lighting setups</li>
+                    <li>Full-day photo &amp; video</li>
+                  </ul>
+                  <button className="btn btn-primary" onClick={() => setQuoteOpen(true)}>
+                    Book this package
+                  </button>
+                </div>
+              </div>
+              <p className="wp-note">
+                Please note: transport to and from your venue is not included in the package price
+                and is quoted separately based on your venue's location.
+              </p>
+            </div>
           </div>
         </section>
 
