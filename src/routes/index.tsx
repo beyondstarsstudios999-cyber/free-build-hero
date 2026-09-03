@@ -44,6 +44,7 @@ function HeroLottie() {
 
   useEffect(() => {
     let anim: AnimationItem | null = null;
+
     let cancelled = false;
     (async () => {
       const lottie = (await import("lottie-web/build/player/lottie_light")).default;
