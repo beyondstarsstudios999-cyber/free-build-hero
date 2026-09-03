@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import type { AnimationItem } from "lottie-web";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -43,13 +44,13 @@ function HeroLottie() {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let anim: { destroy: () => void; play: () => void; addEventListener: (e: string, cb: () => void) => void } | null =
-      null;
+    let anim: AnimationItem | null = null;
+
     let cancelled = false;
     (async () => {
       const lottie = (await import("lottie-web/build/player/lottie_light")).default;
       if (cancelled || !ref.current) return;
-      anim = lottie.loadAnimation({
+      const a = lottie.loadAnimation({
         container: ref.current,
         renderer: "svg",
         loop: true,
@@ -61,9 +62,10 @@ function HeroLottie() {
           imagePreserveAspectRatio: "xMidYMid meet",
         },
       });
-      anim.addEventListener("DOMLoaded", () => {
+      anim = a;
+      a.addEventListener("DOMLoaded", () => {
         ref.current?.parentElement?.classList.add("is-ready");
-        anim?.play();
+        a.play();
       });
     })();
     return () => {
