@@ -5,7 +5,7 @@ import type { AnimationItem } from "lottie-web";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "BeyondStars Studios — 2026 Price List" },
+      { title: "BeyondStars Studios — Affordable Prices" },
       {
         name: "description",
         content:
