@@ -649,13 +649,42 @@ footer .brand-word{ font-size:16px; }
 }
 
 .wedding-hero {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  gap: clamp(28px, 5vw, 72px);
-  flex-wrap: wrap;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.wedding-copy { flex: 1 1 340px; }
+.wedding-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.wedding-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(16, 29, 51, 0.55) 0%,
+    rgba(16, 29, 51, 0.35) 45%,
+    rgba(16, 29, 51, 0.72) 100%
+  );
+}
+
+.wedding-copy {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: clamp(40px, 6vw, 80px) 20px;
+}
 
 .wedding-title {
   display: flex;
@@ -665,15 +694,18 @@ footer .brand-word{ font-size:16px; }
   font-size: clamp(56px, 8.5vw, 118px);
   margin: 0 0 20px;
 }
-.wedding-title .wt-gold { color: #f5b301; }
-.wedding-title .wt-navy { color: var(--ink, #101d33); }
+.wedding-title .wt-gold { color: #f5b301; text-shadow: 0 4px 30px rgba(0, 0, 0, 0.45); }
+.wedding-title .wt-navy { color: #fdf6e8; text-shadow: 0 4px 30px rgba(0, 0, 0, 0.45); }
 
 .wedding-sub {
   max-width: 46ch;
-  color: rgba(16, 29, 51, 0.78);
+  margin-inline: auto;
+  color: rgba(253, 246, 232, 0.92);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
   font-size: clamp(15px, 1.4vw, 18px);
   line-height: 1.6;
-  margin: 0 0 26px;
+  margin-top: 0;
+  margin-bottom: 26px;
 }
 
 .btn-gold {
@@ -693,24 +725,6 @@ footer .brand-word{ font-size:16px; }
 .btn-gold:hover {
   transform: translateY(-2px);
   box-shadow: 0 14px 30px rgba(245, 179, 1, 0.45);
-}
-
-.wedding-media { flex: 1 1 400px; position: relative; }
-.wedding-media::before {
-  content: "";
-  position: absolute;
-  inset: -8% -6% -10% 12%;
-  background: var(--ink, #101d33);
-  border-radius: 48% 0 0 42% / 38% 0 0 48%;
-  z-index: 0;
-}
-.wedding-media img {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  display: block;
-  border-radius: 18px;
-  box-shadow: 0 24px 60px rgba(16, 29, 51, 0.28);
 }
 
 /* Packages */
@@ -769,7 +783,5 @@ footer .brand-word{ font-size:16px; }
 }
 
 @media (max-width: 700px) {
-  .wedding-media::before { inset: -6% -4% -8% 8%; }
-  .wedding-copy { text-align: center; }
-  .wedding-sub { margin-inline: auto; }
+  .wedding-hero { min-height: 88vh; }
 }
