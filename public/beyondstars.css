@@ -639,3 +639,137 @@ footer .brand-word{ font-size:16px; }
 .quote-total b{font-size:26px}
 .quote-note{font-size:12px;opacity:.65;margin:-12px 0 20px}
 .modal .btn{width:100%;text-align:center;justify-content:center}
+
+/* ── White Wedding section ─────────────────────────────── */
+.wedding {
+  background: #ffffff;
+  padding: clamp(64px, 9vw, 120px) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.wedding-hero {
+  display: flex;
+  align-items: center;
+  gap: clamp(28px, 5vw, 72px);
+  flex-wrap: wrap;
+}
+
+.wedding-copy { flex: 1 1 340px; }
+
+.wedding-title {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.94;
+  letter-spacing: 0.01em;
+  font-size: clamp(56px, 8.5vw, 118px);
+  margin: 0 0 20px;
+}
+.wedding-title .wt-gold { color: var(--accent, #f5b301); }
+.wedding-title .wt-navy { color: var(--ink, #101d33); }
+
+.wedding-sub {
+  max-width: 46ch;
+  color: rgba(16, 29, 51, 0.78);
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.6;
+  margin: 0 0 26px;
+}
+
+.btn-gold {
+  display: inline-block;
+  background: var(--accent, #f5b301);
+  color: var(--ink, #101d33);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 14px 34px;
+  border-radius: 999px;
+  text-decoration: none;
+  border: none;
+  box-shadow: 0 10px 24px rgba(245, 179, 1, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(245, 179, 1, 0.45);
+}
+
+.wedding-media { flex: 1 1 400px; position: relative; }
+.wedding-media::before {
+  content: "";
+  position: absolute;
+  inset: -8% -6% -10% 12%;
+  background: var(--ink, #101d33);
+  border-radius: 48% 0 0 42% / 38% 0 0 48%;
+  z-index: 0;
+}
+.wedding-media img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: block;
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(16, 29, 51, 0.28);
+}
+
+/* Packages */
+.wedding-packages { margin-top: clamp(48px, 7vw, 88px); }
+.wp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 22px;
+  margin-top: 22px;
+}
+.wp-card {
+  background: var(--ink, #101d33);
+  color: var(--paper, #fdf6e8);
+  border-radius: 20px;
+  padding: 30px 28px;
+  border: 2px solid rgba(16, 29, 51, 0.9);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.wp-card.featured {
+  border-color: var(--accent, #f5b301);
+  box-shadow: 0 18px 44px rgba(16, 29, 51, 0.35);
+}
+.wp-tag {
+  align-self: flex-start;
+  background: var(--accent, #f5b301);
+  color: var(--ink, #101d33);
+  font-weight: 800;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+.wp-price { font-size: clamp(38px, 4.5vw, 52px); color: var(--accent, #f5b301); }
+.wp-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  font-size: 15px;
+  color: rgba(253, 246, 232, 0.85);
+}
+.wp-list li::before {
+  content: "✦";
+  color: var(--accent, #f5b301);
+  margin-right: 10px;
+}
+.wp-note {
+  margin-top: 20px;
+  font-size: 14px;
+  color: rgba(16, 29, 51, 0.6);
+  max-width: 62ch;
+}
+
+@media (max-width: 700px) {
+  .wedding-media::before { inset: -6% -4% -8% 8%; }
+  .wedding-copy { text-align: center; }
+  .wedding-sub { margin-inline: auto; }
+}
