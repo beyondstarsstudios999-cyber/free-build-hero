@@ -11,7 +11,7 @@ export const Route = createFileRoute("/")({
         content:
           "Graphic design, photography, videography and wedding packages from BeyondStars Studios. Clear 2026 rates in ZAR, from R150.",
       },
-      { property: "og:title", content: "BeyondStars Studios — 2026 Price List" },
+      { property: "og:title", content: "BeyondStars Studios — Affordable Prices" },
       {
         property: "og:description",
         content:
