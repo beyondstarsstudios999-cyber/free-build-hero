@@ -43,8 +43,7 @@ function HeroLottie() {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let anim: { destroy: () => void; play: () => void; addEventListener: (e: string, cb: () => void) => void } | null =
-      null;
+    let anim: AnimationItem | null = null;
     let cancelled = false;
     (async () => {
       const lottie = (await import("lottie-web/build/player/lottie_light")).default;
