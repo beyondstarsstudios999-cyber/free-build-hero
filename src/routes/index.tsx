@@ -25,7 +25,7 @@ export const Route = createFileRoute("/")({
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script:wght@700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap",
       },
       { rel: "stylesheet", href: "/beyondstars.css" },
     ],
@@ -298,10 +298,8 @@ function Index() {
               />
               <div className="wedding-overlay"></div>
               <div className="wedding-copy">
-                <h2 className="wedding-title display">
-                  <span className="wt-gold">White</span>
-                  <span className="wt-navy">Wedding</span>
-                </h2>
+                <h2 className="wedding-title">Weddings</h2>
+
                 <p className="wedding-sub">
                   Your big day, captured beautifully. Full photography and videography coverage by
                   a two-man camera crew — so not a single moment goes unframed.
