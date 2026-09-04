@@ -6,6 +6,11 @@ import g3 from "@/assets/g3.jpg.asset.json";
 import g4 from "@/assets/g4.jpg.asset.json";
 import g5 from "@/assets/g5.png.asset.json";
 import g6 from "@/assets/g6.jpg.asset.json";
+import g7 from "@/assets/gallery-vaya.jpg.asset.json";
+import g8 from "@/assets/gallery-manshow.webp.asset.json";
+import g9 from "@/assets/gallery-kasiefm.jpg.asset.json";
+import g10 from "@/assets/gallery-littledolphins.jpg.asset.json";
+import g11 from "@/assets/gallery-sniffles.jpg.asset.json";
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
@@ -52,6 +57,11 @@ const SHOTS: Array<{ url: string; alt: string }> = [
   { url: g4.url, alt: "Traditional Zulu bridal procession in full regalia" },
   { url: g5.url, alt: "Couple in traditional attire during their ceremony" },
   { url: g6.url, alt: "Elder in traditional dress during the celebration" },
+  { url: g7.url, alt: "Vaya Footwear brand campaign with sneaker spotlight" },
+  { url: g8.url, alt: "The 2 Man Show event flyer with DJs and lineup" },
+  { url: g9.url, alt: "Kasie FM 97.1 team group photo for 2025" },
+  { url: g10.url, alt: "Little Dolphins Learning Centre graduation portraits" },
+  { url: g11.url, alt: "Adventures of Sniffles kids event with mascot" },
 ];
 
 function Gallery() {
