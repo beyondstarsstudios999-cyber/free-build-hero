@@ -298,10 +298,8 @@ function Index() {
               />
               <div className="wedding-overlay"></div>
               <div className="wedding-copy">
-                <h2 className="wedding-title display">
-                  <span className="wt-gold">White</span>
-                  <span className="wt-navy">Wedding</span>
-                </h2>
+                <h2 className="wedding-title">Weddings</h2>
+
                 <p className="wedding-sub">
                   Your big day, captured beautifully. Full photography and videography coverage by
                   a two-man camera crew — so not a single moment goes unframed.
