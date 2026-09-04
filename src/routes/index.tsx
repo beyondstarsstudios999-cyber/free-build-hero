@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import type { AnimationItem } from "lottie-web";
 
@@ -233,7 +233,7 @@ function Index() {
           <nav className={navOpen ? "links open" : "links"} onClick={closeNav}>
             <a href="#design">Design</a>
             <a href="#photography">Photography</a>
-            <a href="#film">Film &amp; Weddings</a>
+            <Link to="/gallery">Gallery</Link>
             <a href="#booking">Booking</a>
             <a
               href="#quote"
