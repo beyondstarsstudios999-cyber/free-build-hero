@@ -68,6 +68,7 @@
   }
   .brand{ display:flex; align-items:center; text-decoration:none; }
   .brand-logo{ height:56px; width:auto; display:block; }
+  .brand-logo-mobile{ display:none; }
   nav.links{ display:flex; align-items:center; gap:clamp(16px,3vw,34px); }
   nav.links a{
     color:var(--muted-light);
@@ -787,6 +788,8 @@ footer .brand-word{ font-size:16px; }
 }
 
 @media (max-width: 700px) {
+  .brand-logo-desktop { display:none; }
+  .brand-logo-mobile { display:block; }
   .wedding-hero {
     aspect-ratio: 4 / 5;
     min-height: 0;

@@ -36,8 +36,13 @@ export const Route = createFileRoute("/")({
 const LOGO_URL = "/assets/beyondstars-logo.png";
 const WHATSAPP_ICON_URL = "/assets/whatsapp-icon.png";
 
+const LOGO_MOBILE_URL = "/assets/beyondstars-logo-gold.png";
+
 const Wordmark = () => (
-  <img src={LOGO_URL} alt="BeyondStars Studios" className="brand-logo" />
+  <>
+    <img src={LOGO_URL} alt="BeyondStars Studios" className="brand-logo brand-logo-desktop" />
+    <img src={LOGO_MOBILE_URL} alt="BeyondStars Studios" className="brand-logo brand-logo-mobile" />
+  </>
 );
 
 function HeroLottie() {
@@ -100,12 +105,17 @@ const QUOTE_SERVICES: Array<[string, number, string?]> = [
   ["Wedding Photography Only", 3500, "/hr"],
   ["Wedding Videography Only", 5000, "/hr"],
   ["Wedding Photo + Video (6 hrs)", 9000],
+  ["White Wedding Package 1 — 2 cameras, 6 hrs, 1 light", 15000],
+  ["White Wedding Package 2 — 3 cameras, drone, 2 lights", 22000],
 ];
 
 const formatR = (n: number) => `R${n.toLocaleString("en-ZA").replace(/,/g, " ")}`;
 
-function QuoteModal({ onClose }: { onClose: () => void }) {
-  const [selected, setSelected] = useState<Set<string>>(new Set());
+const WEDDING_PACKAGE_1 = "White Wedding Package 1 — 2 cameras, 6 hrs, 1 light";
+const WEDDING_PACKAGE_2 = "White Wedding Package 2 — 3 cameras, drone, 2 lights";
+
+function QuoteModal({ onClose, preselect }: { onClose: () => void; preselect?: string[] }) {
+  const [selected, setSelected] = useState<Set<string>>(new Set(preselect ?? []));
   const toggle = (label: string) =>
     setSelected((prev) => {
       const next = new Set(prev);
@@ -170,6 +180,11 @@ function QuoteModal({ onClose }: { onClose: () => void }) {
 function Index() {
   const [navOpen, setNavOpen] = useState(false);
   const [quoteOpen, setQuoteOpen] = useState(false);
+  const [quotePreselect, setQuotePreselect] = useState<string[]>([]);
+  const openQuote = (preselect: string[] = []) => {
+    setQuotePreselect(preselect);
+    setQuoteOpen(true);
+  };
 
   useEffect(() => {
     const els = Array.from(document.querySelectorAll<HTMLElement>(".reveal"));
@@ -255,7 +270,7 @@ function Index() {
                 booking.
               </p>
               <div className="hero-actions">
-                <button className="btn btn-primary" onClick={() => setQuoteOpen(true)}>
+                <button className="btn btn-primary" onClick={() => openQuote()}>
                   Get a quotation
                 </button>
                 <a href="#design" className="btn btn-ghost">
@@ -317,12 +332,12 @@ function Index() {
                   <span className="wp-tag">Package 1</span>
                   <div className="wp-price display">R15 000</div>
                   <ul className="wp-list">
-                    <li>2 cameramen</li>
+                    <li>2 cameras</li>
                     <li>6 hours of coverage</li>
                     <li>1 lighting setup</li>
                     <li>Photo &amp; video highlights</li>
                   </ul>
-                  <button className="btn btn-primary" onClick={() => setQuoteOpen(true)}>
+                  <button className="btn btn-primary" onClick={() => openQuote([WEDDING_PACKAGE_1])}>
                     Book this package
                   </button>
                 </div>
@@ -330,12 +345,12 @@ function Index() {
                   <span className="wp-tag">Package 2 — Most booked</span>
                   <div className="wp-price display">R22 000</div>
                   <ul className="wp-list">
-                    <li>2 cameramen</li>
+                    <li>3 cameras</li>
                     <li>Drone coverage included</li>
                     <li>2 lighting setups</li>
                     <li>Full-day photo &amp; video</li>
                   </ul>
-                  <button className="btn btn-primary" onClick={() => setQuoteOpen(true)}>
+                  <button className="btn btn-primary" onClick={() => openQuote([WEDDING_PACKAGE_2])}>
                     Book this package
                   </button>
                 </div>
@@ -557,7 +572,7 @@ function Index() {
                     received.
                   </p>
                 </div>
-                <button className="btn btn-primary" onClick={() => setQuoteOpen(true)}>
+                <button className="btn btn-primary" onClick={() => openQuote()}>
                   Get a quotation
                 </button>
               </div>
@@ -607,7 +622,7 @@ function Index() {
         <span>WhatsApp us</span>
       </a>
 
-      {quoteOpen && <QuoteModal onClose={() => setQuoteOpen(false)} />}
+      {quoteOpen && <QuoteModal onClose={() => setQuoteOpen(false)} preselect={quotePreselect} />}
     </>
   );
 }
