@@ -788,10 +788,10 @@ footer .brand-word{ font-size:16px; }
 
 @media (max-width: 700px) {
   .wedding-hero {
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 4 / 5;
     min-height: 0;
     max-height: none;
   }
-  .wedding-bg { object-position: 50% 30%; }
+  .wedding-bg { object-position: 58% 26%; }
 }
 
