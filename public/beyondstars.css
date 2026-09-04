@@ -798,3 +798,31 @@ footer .brand-word{ font-size:16px; }
   .wedding-bg { object-position: 58% 26%; }
 }
 
+
+/* Gallery page */
+.gallery-page { padding: clamp(48px, 7vw, 96px) 0; }
+.gallery-grid {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px;
+}
+.gallery-item {
+  margin: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(16, 29, 51, 0.06);
+  border: 2px solid rgba(16, 29, 51, 0.9);
+  aspect-ratio: 1 / 1;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.gallery-item:hover img { transform: scale(1.04); }
+@media (max-width: 700px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+}
