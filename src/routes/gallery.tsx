@@ -61,7 +61,7 @@ function Gallery() {
             <img src={LOGO_URL} alt="BeyondStars Studios" className="brand-logo brand-logo-desktop" />
             <img src={LOGO_MOBILE_URL} alt="BeyondStars Studios" className="brand-logo brand-logo-mobile" />
           </Link>
-          <nav className="links open">
+          <nav className="gallery-back">
             <Link to="/">Back to prices</Link>
           </nav>
         </div>
