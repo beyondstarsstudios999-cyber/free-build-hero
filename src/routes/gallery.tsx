@@ -16,9 +16,8 @@ export const Route = createFileRoute("/gallery")({
         content: "Real weddings and ceremonies captured by BeyondStars Studios.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: "/assets/gallery/g3.jpg" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: "/assets/gallery/g3.jpg" },
+
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
