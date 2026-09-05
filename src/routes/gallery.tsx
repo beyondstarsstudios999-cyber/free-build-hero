@@ -1,16 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
-import g1 from "@/assets/g1.png.asset.json";
-import g2 from "@/assets/g2.png.asset.json";
-import g3 from "@/assets/g3.jpg.asset.json";
-import g4 from "@/assets/g4.jpg.asset.json";
-import g5 from "@/assets/g5.png.asset.json";
-import g6 from "@/assets/g6.jpg.asset.json";
-import g7 from "@/assets/gallery-vaya.jpg.asset.json";
-import g8 from "@/assets/gallery-manshow.webp.asset.json";
-import g9 from "@/assets/gallery-kasiefm.jpg.asset.json";
-import g10 from "@/assets/gallery-littledolphins.jpg.asset.json";
-import g11 from "@/assets/gallery-sniffles.jpg.asset.json";
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
@@ -27,9 +16,8 @@ export const Route = createFileRoute("/gallery")({
         content: "Real weddings and ceremonies captured by BeyondStars Studios.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: g3.url },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: g3.url },
+
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -51,17 +39,17 @@ const PHONE_TEL = "+27672338490";
 const EMAIL = "hilton@beyondstars.co.za";
 
 const SHOTS: Array<{ url: string; alt: string }> = [
-  { url: g1.url, alt: "Bride in a lace gown holding yellow roses by the lake" },
-  { url: g2.url, alt: "Groom taking the bride's hand, wedding rings on display" },
-  { url: g3.url, alt: "Bride and groom celebrating with guests at the reception" },
-  { url: g4.url, alt: "Traditional Zulu bridal procession in full regalia" },
-  { url: g5.url, alt: "Couple in traditional attire during their ceremony" },
-  { url: g6.url, alt: "Elder in traditional dress during the celebration" },
-  { url: g7.url, alt: "Vaya Footwear brand campaign with sneaker spotlight" },
-  { url: g8.url, alt: "The 2 Man Show event flyer with DJs and lineup" },
-  { url: g9.url, alt: "Kasie FM 97.1 team group photo for 2025" },
-  { url: g10.url, alt: "Little Dolphins Learning Centre graduation portraits" },
-  { url: g11.url, alt: "Adventures of Sniffles kids event with mascot" },
+  { url: "/assets/gallery/g1.png", alt: "Bride in a lace gown holding yellow roses by the lake" },
+  { url: "/assets/gallery/g2.png", alt: "Groom taking the bride's hand, wedding rings on display" },
+  { url: "/assets/gallery/g3.jpg", alt: "Bride and groom celebrating with guests at the reception" },
+  { url: "/assets/gallery/g4.jpg", alt: "Traditional Zulu bridal procession in full regalia" },
+  { url: "/assets/gallery/g5.png", alt: "Couple in traditional attire during their ceremony" },
+  { url: "/assets/gallery/g6.jpg", alt: "Elder in traditional dress during the celebration" },
+  { url: "/assets/gallery/gallery-vaya.jpg", alt: "Vaya Footwear brand campaign with sneaker spotlight" },
+  { url: "/assets/gallery/gallery-manshow.webp", alt: "The 2 Man Show event flyer with DJs and lineup" },
+  { url: "/assets/gallery/gallery-kasiefm.jpg", alt: "Kasie FM 97.1 team group photo for 2025" },
+  { url: "/assets/gallery/gallery-littledolphins.jpg", alt: "Little Dolphins Learning Centre graduation portraits" },
+  { url: "/assets/gallery/gallery-sniffles.jpg", alt: "Adventures of Sniffles kids event with mascot" },
 ];
 
 function Gallery() {
