@@ -826,3 +826,15 @@ footer .brand-word{ font-size:16px; }
 @media (max-width: 700px) {
   .gallery-grid { grid-template-columns: 1fr; }
 }
+
+/* Gallery page: simple back link (never the mobile slide-in panel) */
+nav.gallery-back{ display:flex; align-items:center; }
+nav.gallery-back a{
+  color:var(--gold, #f5b301);
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-size:13px;
+  text-decoration:none;
+}
+nav.gallery-back a:hover{ text-decoration:underline; }
