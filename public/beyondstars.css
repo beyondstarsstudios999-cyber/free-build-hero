@@ -838,3 +838,30 @@ nav.gallery-back a{
   text-decoration:none;
 }
 nav.gallery-back a:hover{ text-decoration:underline; }
+
+/* Clients logo divider */
+.clients-divider {
+  padding: 34px 0 30px;
+  background: var(--paper, #fff);
+}
+.clients-divider .wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.clients-divider img {
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+}
+@media (max-width: 720px) {
+  .clients-divider {
+    padding: 22px 0 20px;
+  }
+  .clients-divider img {
+    max-width: 100%;
+  }
+}

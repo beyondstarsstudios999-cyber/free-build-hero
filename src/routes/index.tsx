@@ -303,6 +303,12 @@ function Index() {
           </div>
         </section>
 
+        <section className="clients-divider" aria-label="Our clients">
+          <div className="wrap">
+            <img src="/assets/our-clients.png" alt="Logos of BeyondStars Studios clients" />
+          </div>
+        </section>
+
         <section id="wedding" className="wedding">
           <div className="wrap">
             <div className="wedding-hero reveal">
