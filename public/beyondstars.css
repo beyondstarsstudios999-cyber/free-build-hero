@@ -644,7 +644,7 @@ footer .brand-word{ font-size:16px; }
 /* ── White Wedding section ─────────────────────────────── */
 .wedding {
   background: #ffffff;
-  padding: clamp(64px, 9vw, 120px) 0;
+  padding: 0 0 clamp(64px, 9vw, 120px);
   position: relative;
   overflow: hidden;
 }
@@ -841,8 +841,8 @@ nav.gallery-back a:hover{ text-decoration:underline; }
 
 /* Clients logo divider */
 .clients-divider {
-  padding: 34px 0 30px;
-  background: var(--paper, #fff);
+  padding: 34px 0 0;
+  background: #ffffff;
 }
 .clients-divider .wrap {
   display: flex;
@@ -859,7 +859,7 @@ nav.gallery-back a:hover{ text-decoration:underline; }
 }
 @media (max-width: 720px) {
   .clients-divider {
-    padding: 22px 0 20px;
+    padding: 22px 0 0;
   }
   .clients-divider img {
     max-width: 100%;
