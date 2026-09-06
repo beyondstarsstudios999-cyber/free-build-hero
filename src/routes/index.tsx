@@ -430,31 +430,32 @@ function Index() {
         </section>
 
         <section className="graduation" id="graduation">
-          <div className="wrap">
-            <div className="grad-grid reveal">
-              <div className="grad-photo">
-                <img
-                  src="/assets/graduation.png"
-                  alt="Graduates celebrating in their caps and gowns"
-                />
-                <h2 className="grad-title">Graduation Photography</h2>
-              </div>
-              <div className="grad-copy">
-                <span className="kicker">🎓 Graduation Photography</span>
-                <p>
-                  You worked years for this day — let's make sure it looks like it. From the
-                  tassel turn to the family hugs afterwards, we capture the pride, the joy and
-                  every cap tossed into the sky.
-                </p>
-                <p>
-                  Individual portraits, family group shots and full ceremony coverage, delivered
-                  in crisp high resolution — ready for frames, albums and every auntie's
-                  WhatsApp status.
-                </p>
-                <button className="btn btn-primary" onClick={() => openQuote(["Graduation Photoshoot"])}>
-                  Book your graduation shoot
-                </button>
-              </div>
+          <div className="grad-grid reveal">
+            <div className="grad-copy">
+              <h2 className="grad-heading">
+                <span className="grad-cap" aria-hidden="true">🎓</span>
+                <span className="grad-word">Graduation</span>
+                <span className="grad-sub">Photography</span>
+              </h2>
+              <p>
+                You worked years for this day — let's make sure it looks like it. From the
+                tassel turn to the family hugs afterwards, we capture the pride, the joy and
+                every cap tossed into the sky.
+              </p>
+              <p>
+                Individual portraits, family group shots and full ceremony coverage, delivered
+                in crisp high resolution — ready for frames, albums and every auntie's
+                WhatsApp status.
+              </p>
+              <button className="grad-book-btn" onClick={() => openQuote(["Graduation Photoshoot"])}>
+                Book now
+              </button>
+            </div>
+            <div className="grad-photo">
+              <img
+                src="/assets/graduation.png"
+                alt="Graduates celebrating in their caps and gowns"
+              />
             </div>
           </div>
         </section>
