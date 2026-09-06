@@ -875,7 +875,7 @@ nav.gallery-back a:hover{ text-decoration:underline; }
   display: grid;
   grid-template-columns: minmax(0, 44%) minmax(0, 56%);
   align-items: stretch;
-  min-height: 92vh;
+  min-height: 0;
 }
 .grad-copy {
   position: relative;
@@ -885,18 +885,9 @@ nav.gallery-back a:hover{ text-decoration:underline; }
   justify-content: center;
   background: #fff;
 }
-/* slanted navy divider edge on the text panel */
+/* the graduation artwork carries its own slanted edge */
 .grad-copy::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: -70px;
-  width: 140px;
-  background: #0e2238;
-  transform: skewX(-7deg);
-  transform-origin: top;
-  z-index: 2;
+  content: none;
 }
 .grad-heading {
   margin: 0 0 26px;
@@ -957,15 +948,18 @@ nav.gallery-back a:hover{ text-decoration:underline; }
 }
 .grad-photo {
   position: relative;
-  overflow: hidden;
-  z-index: 1;
+  overflow: visible;
+  z-index: 3;
+  margin-left: clamp(-90px, -5vw, -40px);
+  display: flex;
+  align-items: center;
 }
 .grad-photo img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  height: auto;
+  object-fit: contain;
+  object-position: left center;
 }
 @media (max-width: 860px) {
   .grad-grid {
@@ -996,6 +990,11 @@ nav.gallery-back a:hover{ text-decoration:underline; }
     align-self: center;
   }
   .grad-photo {
-    aspect-ratio: 16 / 10;
+    margin-left: 0;
+    aspect-ratio: auto;
+  }
+  .grad-photo img {
+    max-height: none;
+    object-position: center;
   }
 }
