@@ -920,9 +920,10 @@ nav.gallery-back a:hover{ text-decoration:underline; }
   flex-basis: 100%;
   font-weight: 800;
   color: #0e2238;
-  font-size: clamp(1.6rem, 2.6vw, 2.4rem);
-  letter-spacing: 0.55em;
+  font-size: clamp(1.3rem, 1.9vw, 1.9rem);
+  letter-spacing: 0.3em;
   text-transform: uppercase;
+  white-space: nowrap;
   margin-top: 4px;
 }
 .grad-copy p {
