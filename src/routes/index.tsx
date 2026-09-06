@@ -97,6 +97,7 @@ const QUOTE_SERVICES: Array<[string, number, string?]> = [
   ["Large-format Design (1000–3000mm)", 600],
   ["Studio Session", 1200, "/hr"],
   ["Kids Photoshoot", 750, "/hr"],
+  ["Graduation Photoshoot", 750, "/hr"],
   ["Adult Photoshoot", 1200, "/hr"],
   ["Corporate Portraits", 5700, "/hr"],
   ["Website (starting rate)", 1200, "+"],

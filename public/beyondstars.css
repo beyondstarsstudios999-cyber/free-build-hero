@@ -865,3 +865,71 @@ nav.gallery-back a:hover{ text-decoration:underline; }
     max-width: 100%;
   }
 }
+
+/* ---------- Graduation section ---------- */
+.graduation {
+  padding: 90px 0;
+  background: #fff;
+}
+.grad-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.grad-photo {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(10, 20, 40, 0.22);
+}
+.grad-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.grad-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(6, 12, 24, 0.45) 0%, rgba(6, 12, 24, 0) 38%);
+  pointer-events: none;
+}
+.grad-title {
+  position: absolute;
+  top: 22px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 2;
+  font-family: "Dancing Script", cursive;
+  font-weight: 700;
+  font-size: clamp(2rem, 4.2vw, 3.2rem);
+  color: #f5b301;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+  margin: 0;
+  padding: 0 16px;
+}
+.grad-copy .kicker {
+  display: inline-block;
+  margin-bottom: 14px;
+}
+.grad-copy p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--muted, #4a4436);
+  margin: 0 0 18px;
+}
+.grad-copy .btn {
+  margin-top: 8px;
+}
+@media (max-width: 860px) {
+  .graduation {
+    padding: 60px 0;
+  }
+  .grad-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
