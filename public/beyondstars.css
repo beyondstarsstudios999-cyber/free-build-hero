@@ -1000,6 +1000,11 @@ nav.gallery-back a:hover{ text-decoration:underline; }
     align-self: center;
   }
   .grad-photo {
-    aspect-ratio: 16 / 10;
+    margin-left: 0;
+    aspect-ratio: auto;
+  }
+  .grad-photo img {
+    max-height: none;
+    object-position: center;
   }
 }
