@@ -957,15 +957,19 @@ nav.gallery-back a:hover{ text-decoration:underline; }
 }
 .grad-photo {
   position: relative;
-  overflow: hidden;
-  z-index: 1;
+  overflow: visible;
+  z-index: 3;
+  margin-left: clamp(-120px, -7vw, -60px);
+  display: flex;
+  align-items: center;
 }
 .grad-photo img {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  max-height: 92vh;
+  object-fit: contain;
+  object-position: left center;
 }
 @media (max-width: 860px) {
   .grad-grid {
