@@ -97,6 +97,7 @@ const QUOTE_SERVICES: Array<[string, number, string?]> = [
   ["Large-format Design (1000–3000mm)", 600],
   ["Studio Session", 1200, "/hr"],
   ["Kids Photoshoot", 750, "/hr"],
+  ["Graduation Photoshoot", 750, "/hr"],
   ["Adult Photoshoot", 1200, "/hr"],
   ["Corporate Portraits", 5700, "/hr"],
   ["Website (starting rate)", 1200, "+"],
@@ -423,6 +424,36 @@ function Index() {
                     <div className="mm">{mm}</div>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="graduation" id="graduation">
+          <div className="wrap">
+            <div className="grad-grid reveal">
+              <div className="grad-photo">
+                <img
+                  src="/assets/graduation.png"
+                  alt="Graduates celebrating in their caps and gowns"
+                />
+                <h2 className="grad-title">Graduation Photography</h2>
+              </div>
+              <div className="grad-copy">
+                <span className="kicker">🎓 Graduation Photography</span>
+                <p>
+                  You worked years for this day — let's make sure it looks like it. From the
+                  tassel turn to the family hugs afterwards, we capture the pride, the joy and
+                  every cap tossed into the sky.
+                </p>
+                <p>
+                  Individual portraits, family group shots and full ceremony coverage, delivered
+                  in crisp high resolution — ready for frames, albums and every auntie's
+                  WhatsApp status.
+                </p>
+                <button className="btn btn-primary" onClick={() => openQuote(["Graduation Photoshoot"])}>
+                  Book your graduation shoot
+                </button>
               </div>
             </div>
           </div>
