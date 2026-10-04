@@ -112,7 +112,7 @@
     position:relative;
     z-index:2;
     padding:0 0 46px;
-    background:var(--ink);
+    background:var(--carousel-underlay);
     outline:none;
   }
   .media-hero-stage{
@@ -218,8 +218,8 @@
   }
   @media (max-width:700px){
     .media-hero{ padding-bottom:30px; }
-    .media-hero-stage{ aspect-ratio:9/14; }
-    .media-hero-slide{ object-fit:cover; }
+    .media-hero-stage{ aspect-ratio:16/9; }
+    .media-hero-slide{ object-fit:contain; }
     .carousel-arrow{ width:42px; height:58px; }
     .carousel-arrow svg{ width:28px; height:28px; }
     .carousel-thumbnails{ bottom:12px; width:calc(100% - 32px); gap:6px; padding:6px; }
