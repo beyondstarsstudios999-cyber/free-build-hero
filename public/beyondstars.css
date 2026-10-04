@@ -13,6 +13,9 @@
     --muted-light:#B7C0D6;
     --line:rgba(14,26,48,0.12);
     --line-dark:rgba(245,206,114,0.25);
+    --carousel-active:#20D7F2;
+    --carousel-glow:rgba(32,215,242,0.48);
+    --hero-shadow:rgba(5,10,20,0.68);
     --radius:2px;
     --maxw:1120px;
   }
