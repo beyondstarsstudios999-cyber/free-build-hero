@@ -16,6 +16,7 @@
     --carousel-active:#20D7F2;
     --carousel-glow:rgba(32,215,242,0.48);
     --hero-shadow:rgba(5,10,20,0.68);
+    --carousel-underlay:oklch(0.16 0.045 256);
     --radius:2px;
     --maxw:1120px;
   }
