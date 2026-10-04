@@ -1,6 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import type { AnimationItem } from "lottie-web";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import heroWedding from "@/assets/hero-wedding.png.asset.json";
+import heroUmemulo from "@/assets/hero-umemulo.png.asset.json";
+import heroKiddies from "@/assets/hero-kiddies.png.asset.json";
+import heroGraduation from "@/assets/hero-graduation.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -45,41 +49,86 @@ const Wordmark = () => (
   </>
 );
 
-function HeroLottie() {
-  const ref = useRef<HTMLDivElement>(null);
+const HERO_SLIDES = [
+  { src: heroWedding.url, alt: "Affordable wedding photography and videography packages" },
+  { src: heroUmemulo.url, alt: "Affordable Umemulo photography and videography packages" },
+  { src: heroKiddies.url, alt: "Affordable birthday photography packages for children" },
+  { src: heroGraduation.url, alt: "Affordable cap and gown graduation photography packages" },
+];
+
+function HeroCarousel() {
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const touchStart = useRef<number | null>(null);
+
+  const show = (index: number) => setActive((index + HERO_SLIDES.length) % HERO_SLIDES.length);
 
   useEffect(() => {
-    let anim: AnimationItem | null = null;
+    if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = window.setInterval(() => setActive((current) => (current + 1) % HERO_SLIDES.length), 6000);
+    return () => window.clearInterval(timer);
+  }, [paused]);
 
-    let cancelled = false;
-    (async () => {
-      const lottie = (await import("lottie-web/build/player/lottie_light")).default;
-      if (cancelled || !ref.current) return;
-      const a = lottie.loadAnimation({
-        container: ref.current,
-        renderer: "svg",
-        loop: true,
-        autoplay: false,
-        path: "/assets/hero-animation.json",
-        rendererSettings: {
-          progressiveLoad: false,
-          preserveAspectRatio: "xMidYMid meet",
-          imagePreserveAspectRatio: "xMidYMid meet",
-        },
-      });
-      anim = a;
-      a.addEventListener("DOMLoaded", () => {
-        ref.current?.parentElement?.classList.add("is-ready");
-        a.play();
-      });
-    })();
-    return () => {
-      cancelled = true;
-      anim?.destroy();
-    };
-  }, []);
-
-  return <div className="lottie-holder" ref={ref} />;
+  return (
+    <section
+      className="media-hero"
+      aria-roledescription="carousel"
+      aria-label="BeyondStars photography services"
+      tabIndex={0}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false);
+      }}
+      onKeyDown={(event) => {
+        if (event.key === "ArrowLeft") show(active - 1);
+        if (event.key === "ArrowRight") show(active + 1);
+      }}
+      onTouchStart={(event) => {
+        touchStart.current = event.touches[0]?.clientX ?? null;
+      }}
+      onTouchEnd={(event) => {
+        const start = touchStart.current;
+        const end = event.changedTouches[0]?.clientX;
+        if (start === null || end === undefined || Math.abs(start - end) < 45) return;
+        show(start > end ? active + 1 : active - 1);
+        touchStart.current = null;
+      }}
+    >
+      <div className="media-hero-stage">
+        {HERO_SLIDES.map((slide, index) => (
+          <img
+            key={slide.src}
+            className={index === active ? "media-hero-slide is-active" : "media-hero-slide"}
+            src={slide.src}
+            alt={slide.alt}
+            aria-hidden={index !== active}
+            loading={index === 0 ? "eager" : "lazy"}
+          />
+        ))}
+        <button className="carousel-arrow carousel-arrow-prev" onClick={() => show(active - 1)} aria-label="Previous slide">
+          <ChevronLeft aria-hidden="true" />
+        </button>
+        <button className="carousel-arrow carousel-arrow-next" onClick={() => show(active + 1)} aria-label="Next slide">
+          <ChevronRight aria-hidden="true" />
+        </button>
+        <div className="carousel-thumbnails" aria-label="Choose a slide">
+          {HERO_SLIDES.map((slide, index) => (
+            <button
+              key={slide.src}
+              className={index === active ? "carousel-thumbnail is-active" : "carousel-thumbnail"}
+              onClick={() => show(index)}
+              aria-label={`Show slide ${index + 1}`}
+              aria-current={index === active ? "true" : undefined}
+            >
+              <img src={slide.src} alt="" />
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 const PHONE = "067 233 8490";
@@ -251,58 +300,7 @@ function Index() {
       </header>
 
       <main id="top">
-        <section className="hero">
-          <div className="wrap hero-inner">
-            <div className="hero-text">
-              <span className="eyebrow-tag">PRICE LIST — 2026</span>
-              <h1 className="hero-title display">
-                Design, shot
-                <br />
-                and framed
-                <br />
-                <span className="accent">beyond</span>
-                <br />
-                <span className="accent">the usual.</span>
-              </h1>
-
-              <p className="hero-sub">
-                BeyondStars Studios is a one-stop creative house — graphic design, photography,
-                videography and weddings, priced plainly below so you know exactly what you're
-                booking.
-              </p>
-              <div className="hero-actions">
-                <button className="btn btn-primary" onClick={() => openQuote()}>
-                  Get a quotation
-                </button>
-                <a href="#design" className="btn btn-ghost">
-                  See the price list ↓
-                </a>
-              </div>
-              <div className="hero-strip">
-                <div>
-                  <b>7</b>
-                  <span>Design &amp; print rates</span>
-                </div>
-                <div>
-                  <b>5</b>
-                  <span>Photography sessions</span>
-                </div>
-                <div>
-                  <b>5</b>
-                  <span>Film &amp; wedding packages</span>
-                </div>
-                <div>
-                  <b>R150</b>
-                  <span>Starting rate</span>
-                </div>
-              </div>
-            </div>
-            <div className="hero-rider" aria-hidden="true">
-              <HeroLottie />
-            </div>
-
-          </div>
-        </section>
+        <HeroCarousel />
 
         <section className="clients-divider" aria-label="Our clients">
           <div className="wrap">
