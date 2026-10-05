@@ -1,10 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import heroWedding from "@/assets/hero-wedding.png.asset.json";
-import heroUmemulo from "@/assets/hero-umemulo.png.asset.json";
-import heroKiddies from "@/assets/hero-kiddies.png.asset.json";
-import heroGraduation from "@/assets/hero-graduation.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -50,10 +46,10 @@ const Wordmark = () => (
 );
 
 const HERO_SLIDES = [
-  { src: heroWedding.url, alt: "Affordable wedding photography and videography packages" },
-  { src: heroUmemulo.url, alt: "Affordable Umemulo photography and videography packages" },
-  { src: heroKiddies.url, alt: "Affordable birthday photography packages for children" },
-  { src: heroGraduation.url, alt: "Affordable cap and gown graduation photography packages" },
+  { src: "/assets/slides/hero-wedding.webp", thumb: "/assets/slides/hero-wedding-thumb.webp", alt: "Affordable wedding photography and videography packages" },
+  { src: "/assets/slides/hero-umemulo.webp", thumb: "/assets/slides/hero-umemulo-thumb.webp", alt: "Affordable Umemulo photography and videography packages" },
+  { src: "/assets/slides/hero-kiddies.webp", thumb: "/assets/slides/hero-kiddies-thumb.webp", alt: "Affordable birthday photography packages for children" },
+  { src: "/assets/slides/hero-graduation.webp", thumb: "/assets/slides/hero-graduation-thumb.webp", alt: "Affordable cap and gown graduation photography packages" },
 ];
 
 function HeroCarousel() {
@@ -122,7 +118,7 @@ function HeroCarousel() {
               aria-label={`Show slide ${index + 1}`}
               aria-current={index === active ? "true" : undefined}
             >
-              <img src={slide.src} alt="" />
+              <img src={slide.thumb} alt="" loading="lazy" />
             </button>
           ))}
         </div>
