@@ -219,8 +219,8 @@
   }
   @media (max-width:700px){
     .media-hero{ padding-bottom:30px; }
-    .media-hero-stage{ aspect-ratio:16/9; }
-    .media-hero-slide{ object-fit:contain; }
+    .media-hero-stage{ aspect-ratio:1920/1035; }
+    .media-hero-slide{ object-fit:cover; }
     .carousel-arrow{ width:42px; height:58px; }
     .carousel-arrow svg{ width:28px; height:28px; }
     .carousel-thumbnails{ bottom:12px; width:calc(100% - 32px); gap:6px; padding:6px; }
