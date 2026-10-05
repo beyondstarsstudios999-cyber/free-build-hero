@@ -221,9 +221,11 @@
     .media-hero{ padding-bottom:30px; }
     .media-hero-stage{ aspect-ratio:1920/1035; }
     .media-hero-slide{ object-fit:cover; }
-    .carousel-arrow{ width:42px; height:58px; }
-    .carousel-arrow svg{ width:28px; height:28px; }
-    .carousel-thumbnails{ bottom:12px; width:calc(100% - 32px); gap:6px; padding:6px; }
+    .carousel-arrow{ width:32px; height:44px; }
+    .carousel-arrow svg{ width:22px; height:22px; }
+    .carousel-arrow-prev{ left:6px; }
+    .carousel-arrow-next{ right:6px; }
+    .carousel-thumbnails{ position:relative; left:auto; bottom:auto; transform:none; margin:10px auto 0; width:calc(100% - 32px); gap:6px; padding:6px; }
     .carousel-thumbnail{ min-width:0; border-radius:4px; }
     .media-hero::after{ left:5%; right:5%; bottom:5px; height:22px; }
   }
