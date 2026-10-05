@@ -219,8 +219,9 @@
   }
   @media (max-width:700px){
     .media-hero{ padding-bottom:30px; }
-    .media-hero-stage{ aspect-ratio:1920/1035; }
-    .media-hero-slide{ object-fit:cover; }
+    .media-hero-stage{ aspect-ratio:auto; padding-top:calc(100% * 1035 / 1920); overflow:visible; }
+    .media-hero-slide{ object-fit:cover; bottom:auto; height:auto; aspect-ratio:1920/1035; }
+    .carousel-arrow{ top:calc(100vw * 1035 / 3840); }
     .carousel-arrow{ width:32px; height:44px; }
     .carousel-arrow svg{ width:22px; height:22px; }
     .carousel-arrow-prev{ left:6px; }
