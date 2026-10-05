@@ -48,8 +48,9 @@ const Wordmark = () => (
 const HERO_SLIDES = [
   { src: "/assets/slides/hero-wedding.webp", thumb: "/assets/slides/hero-wedding-thumb.webp", alt: "Affordable wedding photography and videography packages" },
   { src: "/assets/slides/hero-umemulo.webp", thumb: "/assets/slides/hero-umemulo-thumb.webp", alt: "Affordable Umemulo photography and videography packages" },
-  { src: "/assets/slides/hero-kiddies.webp", thumb: "/assets/slides/hero-kiddies-thumb.webp", alt: "Affordable birthday photography packages for children" },
   { src: "/assets/slides/hero-graduation.webp", thumb: "/assets/slides/hero-graduation-thumb.webp", alt: "Affordable cap and gown graduation photography packages" },
+  { src: "/assets/slides/hero-kiddies.webp", thumb: "/assets/slides/hero-kiddies-thumb.webp", alt: "Affordable kiddies photography packages" },
+  { src: "/assets/slides/hero-matric.webp", thumb: "/assets/slides/hero-matric-thumb.webp", alt: "Affordable matric dance photography and videography packages" },
 ];
 
 function HeroCarousel() {
