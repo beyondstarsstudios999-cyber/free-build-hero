@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import type { AnimationItem } from "lottie-web";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -123,6 +124,60 @@ function HeroCarousel() {
             </button>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+function IntroAnimation() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let animation: AnimationItem | null = null;
+    let cancelled = false;
+
+    void import("lottie-web").then(({ default: lottie }) => {
+      if (cancelled || !containerRef.current) return;
+      const loadedAnimation = lottie.loadAnimation({
+        container: containerRef.current,
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        path: "/assets/hero-animation.json",
+        rendererSettings: { preserveAspectRatio: "xMidYMid meet" },
+      });
+      animation = loadedAnimation;
+    });
+
+    return () => {
+      cancelled = true;
+      animation?.destroy();
+    };
+  }, []);
+
+  return <div ref={containerRef} className="intro-animation" aria-hidden="true" />;
+}
+
+function StudioIntro({ onQuote }: { onQuote: () => void }) {
+  return (
+    <section className="studio-intro" aria-label="BeyondStars Studios overview">
+      <div className="studio-intro-inner">
+        <p className="studio-intro-copy">
+          BeyondStars Studios is a one-stop creative house —<br />
+          graphic design, photography, videography and weddings.<br />
+          Priced plainly below so you know exactly what you&apos;re booking.
+        </p>
+        <div className="studio-intro-actions">
+          <button className="intro-button intro-button-gold" onClick={onQuote}>Get a quotation</button>
+          <a className="intro-button intro-button-navy" href="#design">See the price list</a>
+        </div>
+        <div className="intro-rate-strip" aria-label="Service overview">
+          <div><b>7</b><span>Design &amp; print<br />rates</span></div>
+          <div><b>5</b><span>Photography<br />sessions</span></div>
+          <div><b>5</b><span>Film &amp; wedding<br />packages</span></div>
+          <div><b>R150</b><span>Starting rate</span></div>
+        </div>
+        <IntroAnimation />
       </div>
     </section>
   );
@@ -298,6 +353,8 @@ function Index() {
 
       <main id="top">
         <HeroCarousel />
+
+        <StudioIntro onQuote={() => openQuote()} />
 
         <section className="clients-divider" aria-label="Our clients">
           <div className="wrap">
