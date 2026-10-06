@@ -46,11 +46,11 @@ const Wordmark = () => (
 );
 
 const HERO_SLIDES = [
-  { src: "/assets/slides/hero-wedding.webp", thumb: "/assets/slides/hero-wedding-thumb.webp", alt: "Affordable wedding photography and videography packages" },
-  { src: "/assets/slides/hero-umemulo.webp", thumb: "/assets/slides/hero-umemulo-thumb.webp", alt: "Affordable Umemulo photography and videography packages" },
-  { src: "/assets/slides/hero-graduation.webp", thumb: "/assets/slides/hero-graduation-thumb.webp", alt: "Affordable cap and gown graduation photography packages" },
-  { src: "/assets/slides/hero-kiddies.webp", thumb: "/assets/slides/hero-kiddies-thumb.webp", alt: "Affordable kiddies photography packages" },
-  { src: "/assets/slides/hero-matric.webp", thumb: "/assets/slides/hero-matric-thumb.webp", alt: "Affordable matric dance photography and videography packages" },
+  { src: "/assets/slides/campaign-wedding-2026.webp", thumb: "/assets/slides/campaign-wedding-2026-thumb.webp", alt: "Affordable wedding photography and videography packages" },
+  { src: "/assets/slides/campaign-umemulo-2026.webp", thumb: "/assets/slides/campaign-umemulo-2026-thumb.webp", alt: "Affordable Umemulo photography and videography packages" },
+  { src: "/assets/slides/campaign-graduation-2026.webp", thumb: "/assets/slides/campaign-graduation-2026-thumb.webp", alt: "Affordable cap and gown graduation photography packages" },
+  { src: "/assets/slides/campaign-kiddies-2026.webp", thumb: "/assets/slides/campaign-kiddies-2026-thumb.webp", alt: "Affordable kiddies photography packages" },
+  { src: "/assets/slides/campaign-matric-2026.webp", thumb: "/assets/slides/campaign-matric-2026-thumb.webp", alt: "Affordable matric dance photography and videography packages" },
 ];
 
 function HeroCarousel() {
