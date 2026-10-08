@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { AnimationItem } from "lottie-web";
+import useEmblaCarousel from "embla-carousel-react";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -56,72 +58,107 @@ const HERO_SLIDES = [
 
 function HeroCarousel() {
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const touchStart = useRef<number | null>(null);
-
-  const show = (index: number) => setActive((index + HERO_SLIDES.length) % HERO_SLIDES.length);
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const [dragging, setDragging] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const [carouselRef, carousel] = useEmblaCarousel({
+    loop: true,
+    align: "start",
+    duration: reducedMotion ? 0 : 35,
+  });
 
   useEffect(() => {
-    if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = window.setInterval(() => setActive((current) => (current + 1) % HERO_SLIDES.length), 6000);
-    return () => window.clearInterval(timer);
-  }, [paused]);
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateMotion = () => setReducedMotion(preference.matches);
+    const updateVisibility = () => setHidden(document.hidden);
+    updateMotion();
+    updateVisibility();
+    preference.addEventListener("change", updateMotion);
+    document.addEventListener("visibilitychange", updateVisibility);
+    return () => {
+      preference.removeEventListener("change", updateMotion);
+      document.removeEventListener("visibilitychange", updateVisibility);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!carousel) return;
+    const onSelect = () => setActive(carousel.selectedScrollSnap());
+    const onPointerDown = () => setDragging(true);
+    const onPointerUp = () => setDragging(false);
+    onSelect();
+    carousel.on("select", onSelect).on("reInit", onSelect);
+    carousel.on("pointerDown", onPointerDown).on("pointerUp", onPointerUp);
+    return () => {
+      carousel.off("select", onSelect).off("reInit", onSelect);
+      carousel.off("pointerDown", onPointerDown).off("pointerUp", onPointerUp);
+    };
+  }, [carousel]);
+
+  useEffect(() => {
+    if (!carousel || hovered || focused || dragging || hidden || reducedMotion) return;
+    const timer = window.setTimeout(() => carousel.scrollNext(), 6000);
+    return () => window.clearTimeout(timer);
+  }, [carousel, active, hovered, focused, dragging, hidden, reducedMotion]);
 
   return (
     <section
       className="media-hero"
+      role="region"
       aria-roledescription="carousel"
       aria-label="BeyondStars photography services"
       tabIndex={0}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocus={() => setPaused(true)}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocus={() => setFocused(true)}
       onBlur={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false);
+        if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false);
       }}
       onKeyDown={(event) => {
-        if (event.key === "ArrowLeft") show(active - 1);
-        if (event.key === "ArrowRight") show(active + 1);
-      }}
-      onTouchStart={(event) => {
-        touchStart.current = event.touches[0]?.clientX ?? null;
-      }}
-      onTouchEnd={(event) => {
-        const start = touchStart.current;
-        const end = event.changedTouches[0]?.clientX;
-        if (start === null || end === undefined || Math.abs(start - end) < 45) return;
-        show(start > end ? active + 1 : active - 1);
-        touchStart.current = null;
+        if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+          event.preventDefault();
+          if (event.key === "ArrowLeft") carousel?.scrollPrev();
+          else carousel?.scrollNext();
+        }
       }}
     >
       <div className="media-hero-stage">
-        {HERO_SLIDES.map((slide, index) => (
-          <img
-            key={slide.src}
-            className={index === active ? "media-hero-slide is-active" : "media-hero-slide"}
-            src={slide.src}
-            alt={slide.alt}
-            aria-hidden={index !== active}
-            loading={index === 0 ? "eager" : "lazy"}
-          />
-        ))}
-        <button className="carousel-arrow carousel-arrow-prev" onClick={() => show(active - 1)} aria-label="Previous slide">
+        <div className="media-hero-viewport" ref={carouselRef}>
+          <div className="media-hero-track" aria-live={focused ? "polite" : "off"}>
+            {HERO_SLIDES.map((slide, index) => (
+              <div
+                key={slide.src}
+                className={index === active ? "media-hero-slide is-active" : "media-hero-slide"}
+                role="group"
+                aria-roledescription="slide"
+                aria-label={`${index + 1} of ${HERO_SLIDES.length}`}
+                aria-hidden={index !== active}
+              >
+                <img src={slide.src} alt={slide.alt} loading="eager" decoding="async" draggable={false} />
+              </div>
+            ))}
+          </div>
+        </div>
+        <Button variant="ghost" size="icon" className="carousel-arrow carousel-arrow-prev p-0" onClick={() => carousel?.scrollPrev()} aria-label="Previous slide">
           <ChevronLeft aria-hidden="true" />
-        </button>
-        <button className="carousel-arrow carousel-arrow-next" onClick={() => show(active + 1)} aria-label="Next slide">
+        </Button>
+        <Button variant="ghost" size="icon" className="carousel-arrow carousel-arrow-next p-0" onClick={() => carousel?.scrollNext()} aria-label="Next slide">
           <ChevronRight aria-hidden="true" />
-        </button>
+        </Button>
         <div className="carousel-thumbnails" aria-label="Choose a slide">
           {HERO_SLIDES.map((slide, index) => (
-            <button
+            <Button
+              variant="ghost"
               key={slide.src}
-              className={index === active ? "carousel-thumbnail is-active" : "carousel-thumbnail"}
-              onClick={() => show(index)}
+              className={index === active ? "carousel-thumbnail is-active h-auto" : "carousel-thumbnail h-auto"}
+              onClick={() => carousel?.scrollTo(index)}
               aria-label={`Show slide ${index + 1}`}
               aria-current={index === active ? "true" : undefined}
             >
               <img src={slide.thumb} alt="" loading="lazy" />
-            </button>
+            </Button>
           ))}
         </div>
       </div>

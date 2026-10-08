@@ -123,21 +123,37 @@
     overflow:hidden;
     background:var(--ink);
   }
-  .media-hero-slide{
+  .media-hero-viewport{
     position:absolute;
     inset:0;
+    overflow:hidden;
+    touch-action:pan-y pinch-zoom;
+  }
+  .media-hero-track{
+    display:flex;
+    height:100%;
+    backface-visibility:hidden;
+  }
+  .media-hero-slide{
+    position:relative;
+    flex:0 0 100%;
+    min-width:0;
+    height:100%;
+    pointer-events:none;
+  }
+  .media-hero-slide img{
+    display:block;
     width:100%;
     height:100%;
     object-fit:cover;
     object-position:center;
-    opacity:0;
-    transform:scale(1.012);
-    transition:opacity .65s ease, transform 1.2s ease;
-    pointer-events:none;
+    user-select:none;
   }
-  .media-hero-slide.is-active{
-    opacity:1;
-    transform:scale(1);
+  .media-hero:focus-visible,
+  .carousel-arrow:focus-visible,
+  .carousel-thumbnail:focus-visible{
+    outline:2px solid var(--carousel-active);
+    outline-offset:-3px;
   }
   .carousel-arrow{
     position:absolute;
@@ -215,12 +231,13 @@
   }
 
   @media (prefers-reduced-motion: reduce){
-    .media-hero-slide{ transition:none; transform:none; }
+    .carousel-arrow, .carousel-thumbnail{ transition:none; }
+    .carousel-thumbnail:hover{ transform:none; }
   }
   @media (max-width:700px){
     .media-hero{ padding-bottom:30px; }
     .media-hero-stage{ aspect-ratio:auto; padding-top:56.25%; overflow:visible; }
-    .media-hero-slide{ object-fit:cover; bottom:auto; height:auto; aspect-ratio:16/9; }
+    .media-hero-viewport{ bottom:auto; aspect-ratio:16/9; }
     .carousel-arrow{ top:28.125vw; }
     .carousel-arrow{ width:32px; height:44px; }
     .carousel-arrow svg{ width:22px; height:22px; }
