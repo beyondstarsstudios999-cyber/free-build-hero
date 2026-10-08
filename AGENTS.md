@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep the homepage campaign carousel client-side and image-driven so it remains fast, portable, and free of external service costs.
+- Keep campaign banners and thumbnails as versioned public assets referenced by root-relative paths so Vercel serves them independently of Lovable and replacements bypass stale browser caches.
