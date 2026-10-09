@@ -57,6 +57,8 @@ const HERO_SLIDES = [
   { src: "/assets/slides/campaign-matric-2026-oct08.webp", thumb: "/assets/slides/campaign-matric-2026-oct08-thumb.webp", alt: "Affordable matric dance photography and videography packages" },
 ];
 
+const SLIDE_SOUND_URL = "/assets/sfx/camera-shutter-2026-oct09.mp3";
+
 function HeroCarousel() {
   const [active, setActive] = useState(0);
   const [hovered, setHovered] = useState(false);
