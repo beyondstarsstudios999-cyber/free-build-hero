@@ -57,6 +57,8 @@ const HERO_SLIDES = [
   { src: "/assets/slides/campaign-matric-2026-oct08.webp", thumb: "/assets/slides/campaign-matric-2026-oct08-thumb.webp", alt: "Affordable matric dance photography and videography packages" },
 ];
 
+const SLIDE_SOUND_URL = "/assets/sfx/camera-shutter-2026-oct09.mp3";
+
 function HeroCarousel() {
   const [active, setActive] = useState(0);
   const [hovered, setHovered] = useState(false);
@@ -65,6 +67,9 @@ function HeroCarousel() {
   const [hidden, setHidden] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [transitionPlugins] = useState(() => [Fade()]);
+  const heroRef = useRef<HTMLElement | null>(null);
+  const heroInViewRef = useRef(true);
+  const soundRef = useRef<HTMLAudioElement | null>(null);
   const [carouselRef, carousel] = useEmblaCarousel({
     loop: true,
     align: "start",
@@ -86,11 +91,39 @@ function HeroCarousel() {
   }, []);
 
   useEffect(() => {
+    const hero = heroRef.current;
+    if (!hero) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        heroInViewRef.current = entries[0]?.isIntersecting ?? false;
+      },
+      { threshold: 0.25 }
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
     if (!carousel) return;
-    const onSelect = () => setActive(carousel.selectedScrollSnap());
+    const playSlideSound = () => {
+      if (!heroInViewRef.current || document.hidden) return;
+      if (!soundRef.current) {
+        soundRef.current = new Audio(SLIDE_SOUND_URL);
+        soundRef.current.preload = "auto";
+      }
+      const sound = soundRef.current;
+      sound.currentTime = 0;
+      void sound.play().catch(() => {
+        // Browsers block audio before the first user gesture; skip silently.
+      });
+    };
+    const onSelect = () => {
+      setActive(carousel.selectedScrollSnap());
+      playSlideSound();
+    };
     const onPointerDown = () => setDragging(true);
     const onPointerUp = () => setDragging(false);
-    onSelect();
+    setActive(carousel.selectedScrollSnap());
     carousel.on("select", onSelect).on("reInit", onSelect);
     carousel.on("pointerDown", onPointerDown).on("pointerUp", onPointerUp);
     return () => {
@@ -107,6 +140,7 @@ function HeroCarousel() {
 
   return (
     <section
+      ref={heroRef}
       className={hovered || focused || dragging || hidden ? "media-hero is-paused" : "media-hero"}
       role="region"
       aria-roledescription="carousel"
