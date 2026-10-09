@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { AnimationItem } from "lottie-web";
 import useEmblaCarousel from "embla-carousel-react";
+import Fade from "embla-carousel-fade";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
@@ -63,11 +64,12 @@ function HeroCarousel() {
   const [dragging, setDragging] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [transitionPlugins] = useState(() => [Fade()]);
   const [carouselRef, carousel] = useEmblaCarousel({
     loop: true,
     align: "start",
     duration: reducedMotion ? 0 : 35,
-  });
+  }, transitionPlugins);
 
   useEffect(() => {
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -105,7 +107,7 @@ function HeroCarousel() {
 
   return (
     <section
-      className="media-hero"
+      className={hovered || focused || dragging || hidden ? "media-hero is-paused" : "media-hero"}
       role="region"
       aria-roledescription="carousel"
       aria-label="BeyondStars photography services"

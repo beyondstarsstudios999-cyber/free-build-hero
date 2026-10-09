@@ -140,6 +140,7 @@
     min-width:0;
     height:100%;
     pointer-events:none;
+    overflow:hidden;
   }
   .media-hero-slide img{
     display:block;
@@ -148,6 +149,17 @@
     object-fit:cover;
     object-position:center;
     user-select:none;
+    transform-origin:center;
+  }
+  .media-hero-slide.is-active img{
+    animation:campaign-zoom 6s cubic-bezier(.4,0,.2,1) both;
+  }
+  .media-hero.is-paused .media-hero-slide img{
+    animation-play-state:paused;
+  }
+  @keyframes campaign-zoom{
+    0%, 100%{ transform:scale(1); }
+    50%{ transform:scale(1.045); }
   }
   .media-hero:focus-visible,
   .carousel-arrow:focus-visible,
@@ -231,6 +243,7 @@
   }
 
   @media (prefers-reduced-motion: reduce){
+    .media-hero-slide.is-active img{ animation:none; }
     .carousel-arrow, .carousel-thumbnail{ transition:none; }
     .carousel-thumbnail:hover{ transform:none; }
   }

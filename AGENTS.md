@@ -10,6 +10,6 @@
 <!-- LOVABLE:END -->
 
 - Keep the homepage campaign carousel client-side and image-driven so it remains fast, portable, and free of external service costs.
-- Use the already-installed Embla hook for the homepage slider's horizontal looping and touch physics; keep its viewport isolated from the existing controls so presentation stays unchanged.
+- Use Embla with its Fade companion for overlapping campaign transitions and touch physics, and CSS for each picture's zoom cycle; isolate the viewport from the controls to preserve presentation.
 - Keep campaign banners and thumbnails as versioned public assets referenced by root-relative paths so Vercel serves them independently of Lovable and replacements bypass stale browser caches.
 - Keep shared website logos as traced SVG public assets and device icons as sized, versioned public PNGs referenced by the shared root head, so both pages stay crisp and portable on Vercel.
