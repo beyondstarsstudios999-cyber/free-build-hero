@@ -91,8 +91,36 @@ function HeroCarousel() {
   }, []);
 
   useEffect(() => {
+    const hero = heroRef.current;
+    if (!hero) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        heroInViewRef.current = entries[0]?.isIntersecting ?? false;
+      },
+      { threshold: 0.25 }
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
     if (!carousel) return;
-    const onSelect = () => setActive(carousel.selectedScrollSnap());
+    const playSlideSound = () => {
+      if (!heroInViewRef.current || document.hidden) return;
+      if (!soundRef.current) {
+        soundRef.current = new Audio(SLIDE_SOUND_URL);
+        soundRef.current.preload = "auto";
+      }
+      const sound = soundRef.current;
+      sound.currentTime = 0;
+      void sound.play().catch(() => {
+        // Browsers block audio before the first user gesture; skip silently.
+      });
+    };
+    const onSelect = () => {
+      setActive(carousel.selectedScrollSnap());
+      playSlideSound();
+    };
     const onPointerDown = () => setDragging(true);
     const onPointerUp = () => setDragging(false);
     onSelect();
