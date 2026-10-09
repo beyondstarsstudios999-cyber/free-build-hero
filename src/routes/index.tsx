@@ -67,6 +67,9 @@ function HeroCarousel() {
   const [hidden, setHidden] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [transitionPlugins] = useState(() => [Fade()]);
+  const heroRef = useRef<HTMLElement | null>(null);
+  const heroInViewRef = useRef(true);
+  const soundRef = useRef<HTMLAudioElement | null>(null);
   const [carouselRef, carousel] = useEmblaCarousel({
     loop: true,
     align: "start",
