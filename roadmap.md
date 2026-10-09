@@ -1,3 +1,3 @@
-- [ ] Replace the old 3D website logo with the existing flat gold logo as a real vector on both pages.
-- [ ] Update browser and Apple device icons from the uploaded favicon with fresh Vercel-safe addresses.
-- [ ] Verify logos and icons load on desktop and phone.
+- [x] Replace the old 3D website logo with the existing flat gold logo as a real vector on both pages.
+- [x] Update browser and Apple device icons from the uploaded favicon with fresh Vercel-safe addresses.
+- [x] Verify logos and icons load on desktop and phone.
