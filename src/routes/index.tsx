@@ -123,7 +123,7 @@ function HeroCarousel() {
     };
     const onPointerDown = () => setDragging(true);
     const onPointerUp = () => setDragging(false);
-    onSelect();
+    setActive(carousel.selectedScrollSnap());
     carousel.on("select", onSelect).on("reInit", onSelect);
     carousel.on("pointerDown", onPointerDown).on("pointerUp", onPointerUp);
     return () => {
@@ -140,6 +140,7 @@ function HeroCarousel() {
 
   return (
     <section
+      ref={heroRef}
       className={hovered || focused || dragging || hidden ? "media-hero is-paused" : "media-hero"}
       role="region"
       aria-roledescription="carousel"
