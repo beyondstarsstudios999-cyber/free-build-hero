@@ -36,10 +36,10 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const LOGO_URL = "/assets/beyondstars-logo.png";
+const LOGO_URL = "/assets/beyondstars-logo-gold-2026-oct09.svg";
 const WHATSAPP_ICON_URL = "/assets/whatsapp-icon.png";
 
-const LOGO_MOBILE_URL = "/assets/beyondstars-logo-gold.png";
+const LOGO_MOBILE_URL = LOGO_URL;
 
 const Wordmark = () => (
   <>
