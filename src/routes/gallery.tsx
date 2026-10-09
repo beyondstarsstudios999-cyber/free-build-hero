@@ -32,8 +32,8 @@ export const Route = createFileRoute("/gallery")({
   component: Gallery,
 });
 
-const LOGO_URL = "/assets/beyondstars-logo.png";
-const LOGO_MOBILE_URL = "/assets/beyondstars-logo-gold.png";
+const LOGO_URL = "/assets/beyondstars-logo-gold-2026-oct09.svg";
+const LOGO_MOBILE_URL = LOGO_URL;
 const PHONE = "067 233 8490";
 const PHONE_TEL = "+27672338490";
 const EMAIL = "hilton@beyondstars.co.za";
