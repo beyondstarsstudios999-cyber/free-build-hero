@@ -103,18 +103,48 @@ function HeroCarousel() {
     return () => observer.disconnect();
   }, []);
 
+  // Browsers block audio until the first user gesture; create the sound up
+  // front and unlock it on the first pointer/key interaction anywhere.
+  useEffect(() => {
+    const sound = new Audio(SLIDE_SOUND_URL);
+    sound.preload = "auto";
+    soundRef.current = sound;
+    let unlocked = false;
+    const unlock = () => {
+      if (unlocked) return;
+      unlocked = true;
+      sound.muted = true;
+      void sound
+        .play()
+        .then(() => {
+          sound.pause();
+          sound.currentTime = 0;
+          sound.muted = false;
+        })
+        .catch(() => {
+          unlocked = false;
+          sound.muted = false;
+        });
+    };
+    window.addEventListener("pointerdown", unlock);
+    window.addEventListener("keydown", unlock);
+    return () => {
+      window.removeEventListener("pointerdown", unlock);
+      window.removeEventListener("keydown", unlock);
+      sound.pause();
+      soundRef.current = null;
+    };
+  }, []);
+
   useEffect(() => {
     if (!carousel) return;
     const playSlideSound = () => {
       if (!heroInViewRef.current || document.hidden) return;
-      if (!soundRef.current) {
-        soundRef.current = new Audio(SLIDE_SOUND_URL);
-        soundRef.current.preload = "auto";
-      }
       const sound = soundRef.current;
+      if (!sound || sound.muted) return;
       sound.currentTime = 0;
       void sound.play().catch(() => {
-        // Browsers block audio before the first user gesture; skip silently.
+        // Still gesture-blocked; skip silently.
       });
     };
     const onSelect = () => {
