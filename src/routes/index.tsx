@@ -439,6 +439,7 @@ function Index() {
             <a href="#design">Design</a>
             <a href="#photography">Photography</a>
             <Link to="/gallery">Gallery</Link>
+            <Link to="/portfolio">Portfolio</Link>
             <a href="#booking">Booking</a>
             <a
               href="#quote"
