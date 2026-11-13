@@ -993,7 +993,7 @@ footer .brand-word{ font-size:16px; }
 }
 
 /* Gallery page: simple back link (never the mobile slide-in panel) */
-nav.gallery-back{ display:flex; align-items:center; }
+nav.gallery-back{ display:flex; align-items:center; gap:18px; }
 nav.gallery-back a{
   color:var(--gold, #f5b301);
   font-weight:700;
@@ -1162,4 +1162,97 @@ nav.gallery-back a:hover{ text-decoration:underline; }
     max-height: none;
     object-position: center;
   }
+}
+
+/* ---------- Creative by BeyondStars portfolio ---------- */
+.portfolio-page {
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+}
+.portfolio-intro {
+  padding: clamp(42px, 7vw, 82px) 0 clamp(28px, 4vw, 48px);
+  background: var(--ink);
+  color: var(--paper);
+}
+.portfolio-intro .kicker { color: var(--gold-light); }
+.portfolio-intro h1 {
+  max-width: 18ch;
+  margin: 18px 0 12px;
+  color: var(--paper);
+  font-size: clamp(36px, 6vw, 68px);
+  line-height: 1.02;
+}
+.portfolio-intro p {
+  max-width: 55ch;
+  margin: 0;
+  color: var(--muted-light);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.portfolio-section {
+  padding: clamp(38px, 6vw, 72px) 0;
+  border-bottom: 1px solid var(--line);
+}
+.portfolio-section-alt { background: var(--paper-2); }
+.portfolio-section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 26px;
+}
+.portfolio-section-heading h2 {
+  margin: 8px 0 0;
+  color: var(--ink);
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 1.05;
+}
+.portfolio-ratio {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  border: 1px solid var(--gold-deep);
+  color: var(--gold-deep);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+}
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: clamp(26px, 4vw, 44px);
+}
+.portfolio-item {
+  width: min(100%, 760px);
+  min-width: 0;
+  margin: 0;
+}
+.portfolio-grid-vertical .portfolio-item { width: min(100%, 470px); }
+.portfolio-grid-square .portfolio-item { width: min(100%, 680px); }
+.portfolio-grid-widescreen .portfolio-item { width: min(100%, 980px); }
+.portfolio-item video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 78vh;
+  margin: 0 auto;
+  object-fit: contain;
+  background: var(--ink);
+  border: 1px solid var(--line-dark);
+}
+.portfolio-grid-vertical .portfolio-item video { aspect-ratio: 9 / 16; }
+.portfolio-grid-square .portfolio-item video { aspect-ratio: 1 / 1; }
+.portfolio-grid-widescreen .portfolio-item video { aspect-ratio: 16 / 9; }
+.portfolio-item h3 {
+  margin: 12px 0 0;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.4;
+}
+@media (max-width: 700px) {
+  .portfolio-intro { padding: 38px 0 32px; }
+  .portfolio-intro h1 { font-size: 38px; }
+  .portfolio-section-heading { align-items: flex-start; }
+  .portfolio-item h3 { font-size: 14px; }
 }

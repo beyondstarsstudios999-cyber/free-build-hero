@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import lobolaCelebration from "../assets/portfolio/lobola-celebration-2025.mp4.asset.json";
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
@@ -50,6 +51,11 @@ const VERTICAL_VIDEOS: PortfolioVideo[] = [
     src: "/assets/portfolio/munchie-munchie-puppet.mp4",
     poster: "/assets/portfolio/munchie-munchie-puppet.jpg",
   },
+  {
+    title: "Get Your Tickets — Zani Eatery",
+    src: "/assets/portfolio/get-your-tickets-zani-eatery.mp4",
+    poster: "/assets/portfolio/get-your-tickets-zani-eatery.jpg",
+  },
 ];
 
 const SQUARE_VIDEOS: PortfolioVideo[] = [
@@ -73,6 +79,16 @@ const SQUARE_VIDEOS: PortfolioVideo[] = [
     src: "/assets/portfolio/african-restaurant-promo.mp4",
     poster: "/assets/portfolio/african-restaurant-promo.jpg",
   },
+  {
+    title: "Invitation for Little Dolphins Learning",
+    src: "/assets/portfolio/invitation-little-dolphins-learning.mp4",
+    poster: "/assets/portfolio/invitation-little-dolphins-learning.jpg",
+  },
+  {
+    title: "Lobola Celebration 2025",
+    src: lobolaCelebration.url,
+    poster: "/assets/portfolio/lobola-celebration-2025.jpg",
+  },
 ];
 
 const WIDESCREEN_VIDEOS: PortfolioVideo[] = [
@@ -80,6 +96,11 @@ const WIDESCREEN_VIDEOS: PortfolioVideo[] = [
     title: "BeyondStars Brand Film",
     src: "/assets/portfolio/beyondstars-brand-film.mp4",
     poster: "/assets/portfolio/beyondstars-brand-film.jpg",
+  },
+  {
+    title: "Zaolaemoboyz",
+    src: "/assets/portfolio/zaolaemoboyz.mp4",
+    poster: "/assets/portfolio/zaolaemoboyz.jpg",
   },
 ];
 
