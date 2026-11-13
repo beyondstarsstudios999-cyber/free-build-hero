@@ -13,3 +13,4 @@
 - Use Embla with its Fade companion for overlapping campaign transitions and touch physics, and CSS for each picture's zoom cycle; isolate the viewport from the controls to preserve presentation.
 - Keep campaign banners and thumbnails as versioned public assets referenced by root-relative paths so Vercel serves them independently of Lovable and replacements bypass stale browser caches.
 - Keep shared website logos as traced SVG public assets and device icons as sized, versioned public PNGs referenced by the shared root head, so both pages stay crisp and portable on Vercel.
+- Group portfolio clips by their actual aspect ratio, render one video per row, and host any clip exceeding repository file limits through an asset pointer.
