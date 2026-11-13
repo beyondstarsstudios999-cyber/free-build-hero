@@ -993,7 +993,7 @@ footer .brand-word{ font-size:16px; }
 }
 
 /* Gallery page: simple back link (never the mobile slide-in panel) */
-nav.gallery-back{ display:flex; align-items:center; }
+nav.gallery-back{ display:flex; align-items:center; gap:18px; }
 nav.gallery-back a{
   color:var(--gold, #f5b301);
   font-weight:700;

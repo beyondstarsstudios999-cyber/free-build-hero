@@ -3,4 +3,4 @@
 - [x] Verify logos and icons load on desktop and phone.
 - [x] Add the “Creative by BeyondStars” portfolio page with separate portrait, square, and widescreen sections.
 - [x] Include all eleven uploaded videos and link the portfolio from the website navigation.
-- [ ] Verify the portfolio page and its videos on desktop and mobile.
+- [x] Verify the portfolio page and its videos on desktop and mobile.
