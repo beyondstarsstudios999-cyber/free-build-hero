@@ -1,7 +1,5 @@
 - [x] Replace the old 3D website logo with the existing flat gold logo as a real vector on both pages.
 - [x] Update browser and Apple device icons from the uploaded favicon with fresh Vercel-safe addresses.
-- [x] Replace the old 3D website logo with the existing flat gold logo as a real vector on both pages.
-- [x] Update browser and Apple device icons from the uploaded favicon with fresh Vercel-safe addresses.
 - [x] Verify logos and icons load on desktop and phone.
 - [x] Add the “Creative by BeyondStars” portfolio page with separate portrait, square, and widescreen sections.
 - [x] Include all eleven uploaded videos and link the portfolio from the website navigation.
