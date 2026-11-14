@@ -56,6 +56,11 @@ const VERTICAL_VIDEOS: PortfolioVideo[] = [
     src: "/assets/portfolio/get-your-tickets-zani-eatery.mp4",
     poster: "/assets/portfolio/get-your-tickets-zani-eatery.jpg",
   },
+  {
+    title: "New Market Motor Co.",
+    src: "/assets/portfolio/get-your-tickets-zani-eatery-new-market.mp4",
+    poster: "/assets/portfolio/get-your-tickets-zani-eatery-new-market.jpg",
+  },
 ];
 
 const SQUARE_VIDEOS: PortfolioVideo[] = [
