@@ -1219,18 +1219,15 @@ nav.gallery-back a:hover{ text-decoration:underline; }
 }
 .portfolio-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  justify-items: center;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
   gap: clamp(26px, 4vw, 44px);
 }
 .portfolio-item {
-  width: min(100%, 760px);
+  width: 100%;
   min-width: 0;
   margin: 0;
 }
-.portfolio-grid-vertical .portfolio-item { width: min(100%, 470px); }
-.portfolio-grid-square .portfolio-item { width: min(100%, 680px); }
-.portfolio-grid-widescreen .portfolio-item { width: min(100%, 980px); }
 .portfolio-item video {
   display: block;
   width: 100%;
@@ -1254,5 +1251,7 @@ nav.gallery-back a:hover{ text-decoration:underline; }
   .portfolio-intro { padding: 38px 0 32px; }
   .portfolio-intro h1 { font-size: 38px; }
   .portfolio-section-heading { align-items: flex-start; }
+  .portfolio-grid { grid-template-columns: minmax(0, 1fr); }
+  .portfolio-item { width: min(100%, 470px); }
   .portfolio-item h3 { font-size: 14px; }
 }
