@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import type { AnimationItem } from "lottie-web";
 import useEmblaCarousel from "embla-carousel-react";
 import Fade from "embla-carousel-fade";
@@ -379,6 +379,158 @@ function QuoteModal({ onClose, preselect }: { onClose: () => void; preselect?: s
         </a>
       </div>
     </div>
+  );
+}
+
+function WeddingSpecialPromotion() {
+  const [visible, setVisible] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
+  const [detailsOpen, setDetailsOpen] = useState(false);
+  const dialogRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    try {
+      if (window.sessionStorage.getItem("beyondstars-wedding-special-shown") === "yes") return;
+    } catch {
+      // The offer remains available if browser storage is disabled.
+    }
+    const timer = window.setTimeout(() => {
+      setVisible(true);
+      try {
+        window.sessionStorage.setItem("beyondstars-wedding-special-shown", "yes");
+      } catch {
+        // Storage is optional; the teaser still works for this visit.
+      }
+    }, 1800);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (!detailsOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    dialogRef.current?.focus();
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setDetailsOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [detailsOpen]);
+
+  const whatsappHref = `https://wa.me/27672338490?text=${encodeURIComponent("Hi BeyondStars Studios, I would like to book the R6,500 Gauteng wedding special.")}`;
+
+  return (
+    <>
+      {visible && !dismissed && (
+        <aside className="wedding-special-teaser" aria-label="Wedding special offer">
+          <Button
+            type="button"
+            variant="ghost"
+            className="wedding-special-dismiss"
+            aria-label="Dismiss wedding special"
+            onClick={() => setDismissed(true)}
+          >
+            <X aria-hidden="true" />
+          </Button>
+          <Button
+            type="button"
+            variant="ghost"
+            className="wedding-special-trigger"
+            onClick={() => setDetailsOpen(true)}
+            aria-haspopup="dialog"
+          >
+            <img src="/assets/wedding-special-teaser-2027.webp" alt="" />
+            <span className="wedding-special-teaser-copy">
+              <strong>Wedding special</strong>
+              <span>R6 500 · Gauteng</span>
+              <span className="wedding-special-open">See the offer <span aria-hidden="true">↗</span></span>
+            </span>
+          </Button>
+        </aside>
+      )}
+
+      {detailsOpen && (
+        <div
+          className="wedding-special-backdrop"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setDetailsOpen(false);
+          }}
+        >
+          <div
+            ref={dialogRef}
+            className="wedding-special-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="wedding-special-title"
+            tabIndex={-1}
+          >
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
+              className="wedding-special-close"
+              onClick={() => setDetailsOpen(false)}
+              aria-label="Close wedding special details"
+            >
+              <X aria-hidden="true" />
+            </Button>
+            <div className="wedding-special-topline">
+              <span>BeyondStars Studios</span>
+              <span>Limited wedding offer</span>
+            </div>
+            <div className="wedding-special-heading">
+              <p className="wedding-special-eyebrow">Photography &amp; videography · Gauteng only</p>
+              <h2 id="wedding-special-title">Your day, beautifully remembered.</h2>
+              <div className="wedding-special-price">
+                <span className="wedding-special-was">Was R10 000</span>
+                <strong>R6 500</strong>
+                <span className="wedding-special-saving">Save R3 500</span>
+              </div>
+            </div>
+            <div className="wedding-special-content">
+              <section className="wedding-special-includes" aria-labelledby="special-includes-title">
+                <div className="wedding-special-section-title">
+                  <span>01</span>
+                  <h3 id="special-includes-title">Included in your special</h3>
+                </div>
+                <ul>
+                  <li><b>Couple interviews</b><span>1–2 minutes per person</span></li>
+                  <li><b>Cinematic wedding film</b><span>20-minute edit</span></li>
+                  <li><b>Drone shots</b><span>Weather, venue permission and safe flying conditions permitting</span></li>
+                  <li><b>Wedding photographs</b><span>150 high-resolution, professionally colour-graded photos</span></li>
+                  <li><b>Custom-designed cover</b><span>AI print-ready design</span></li>
+                  <li><b>Social highlight reel</b><span>1-minute edited reel</span></li>
+                </ul>
+              </section>
+              <section className="wedding-special-payment" aria-labelledby="special-payment-title">
+                <div className="wedding-special-section-title">
+                  <span>02</span>
+                  <h3 id="special-payment-title">Payment schedule</h3>
+                </div>
+                <div className="wedding-special-payment-steps">
+                  <div><span>Booking deposit · secures your date</span><strong>R1 500</strong></div>
+                  <div><span>On the event day · before the shoot</span><strong>R3 000</strong></div>
+                  <div><span>When the project is ready</span><strong>R2 000</strong></div>
+                </div>
+              </section>
+              <div className="wedding-special-notes">
+                <p><b>Coverage</b><span>Maximum of 6 hours</span></p>
+                <p><b>Travel &amp; stay</b><span>Transport, hospitality and accommodation are excluded if required.</span></p>
+              </div>
+            </div>
+            <div className="wedding-special-footer">
+              <p><span>Offer ends</span><strong>6 January 2027</strong></p>
+              <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="wedding-special-cta">
+                Reserve your date <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -816,6 +968,7 @@ function Index() {
         <span>WhatsApp us</span>
       </a>
 
+      <WeddingSpecialPromotion />
       {quoteOpen && <QuoteModal onClose={() => setQuoteOpen(false)} preselect={quotePreselect} />}
     </>
   );
