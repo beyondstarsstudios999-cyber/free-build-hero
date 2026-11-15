@@ -408,15 +408,34 @@ function WeddingSpecialPromotion() {
   useEffect(() => {
     if (!detailsOpen) return;
     const previousOverflow = document.body.style.overflow;
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     document.body.style.overflow = "hidden";
     dialogRef.current?.focus();
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") setDetailsOpen(false);
+      if (event.key === "Tab") {
+        const dialog = dialogRef.current;
+        const focusable = dialog?.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        );
+        const first = focusable?.[0];
+        const last = focusable?.[focusable.length - 1];
+        if (!first || !last) {
+          event.preventDefault();
+        } else if (event.shiftKey && (document.activeElement === first || document.activeElement === dialog)) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", onKeyDown);
+      previousFocus?.focus();
     };
   }, [detailsOpen]);
 
@@ -441,6 +460,7 @@ function WeddingSpecialPromotion() {
             className="wedding-special-trigger"
             onClick={() => setDetailsOpen(true)}
             aria-haspopup="dialog"
+            aria-label="Open the R6,500 Gauteng wedding special"
           >
             <img src="/assets/wedding-special-teaser-2027.webp" alt="" />
             <span className="wedding-special-teaser-copy">

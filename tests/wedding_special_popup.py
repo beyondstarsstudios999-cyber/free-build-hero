@@ -9,7 +9,7 @@ async def main():
         page = await browser.new_page(viewport={"width": 1280, "height": 1800})
         await page.goto("http://localhost:8080", wait_until="domcontentloaded")
         await page.wait_for_timeout(2200)
-        trigger = page.get_by_role("button", name="Wedding special R6 500 · Gauteng See the offer")
+        trigger = page.get_by_role("button", name="Open the R6,500 Gauteng wedding special")
         assert await trigger.is_visible(), "The wedding offer teaser should appear after a short delay."
         await trigger.click()
         dialog = page.get_by_role("dialog", name="Your day, beautifully remembered.")
