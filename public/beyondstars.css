@@ -1255,3 +1255,191 @@ nav.gallery-back a:hover{ text-decoration:underline; }
   .portfolio-item { width: min(100%, 470px); }
   .portfolio-item h3 { font-size: 14px; }
 }
+
+/* ---------- Wedding special popup ---------- */
+.wedding-special-teaser {
+  position: fixed;
+  z-index: 80;
+  left: clamp(14px, 2.5vw, 30px);
+  bottom: clamp(14px, 2.5vw, 30px);
+  width: min(224px, calc(100vw - 28px));
+  overflow: hidden;
+  border: 1px solid color-mix(in oklab, var(--gold) 72%, var(--paper));
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: 0 16px 44px color-mix(in oklab, var(--ink) 42%, transparent);
+  animation: wedding-special-arrive .45s cubic-bezier(.2,.8,.2,1) both;
+}
+.wedding-special-trigger {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  text-align: left;
+  white-space: normal;
+}
+.wedding-special-trigger:hover { background: var(--navy); color: var(--paper); }
+.wedding-special-trigger img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 603 / 710;
+  object-fit: cover;
+}
+.wedding-special-teaser-copy {
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px 14px;
+}
+.wedding-special-teaser-copy strong { color: var(--gold-light); font-size: 14px; }
+.wedding-special-teaser-copy > span { font-size: 12px; }
+.wedding-special-teaser-copy .wedding-special-open {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line-dark);
+  color: var(--gold-light);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.wedding-special-dismiss {
+  position: absolute;
+  z-index: 1;
+  top: 7px;
+  right: 7px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid color-mix(in oklab, var(--paper) 50%, transparent);
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--ink) 82%, transparent);
+  color: var(--paper);
+}
+.wedding-special-dismiss svg { width: 16px; height: 16px; }
+.wedding-special-backdrop {
+  position: fixed;
+  z-index: 1100;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: color-mix(in oklab, var(--ink) 82%, transparent);
+  backdrop-filter: blur(8px);
+  overflow-y: auto;
+}
+.wedding-special-dialog {
+  position: relative;
+  width: min(760px, 100%);
+  max-height: min(92vh, 940px);
+  overflow: auto;
+  border: 1px solid color-mix(in oklab, var(--gold) 75%, transparent);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 28px 90px color-mix(in oklab, var(--ink) 55%, transparent);
+}
+.wedding-special-close {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  right: 12px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--line-dark);
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--ink) 78%, transparent);
+  color: var(--paper);
+}
+.wedding-special-close:hover { background: var(--gold); color: var(--ink); }
+.wedding-special-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 64px 14px 22px;
+  background: var(--ink);
+  color: var(--gold-light);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.wedding-special-heading {
+  padding: clamp(22px, 4vw, 36px);
+  background: var(--navy);
+  color: var(--paper);
+}
+.wedding-special-eyebrow {
+  margin: 0 0 9px;
+  color: var(--gold-light);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.wedding-special-heading h2 {
+  max-width: 17ch;
+  margin: 0;
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 400;
+  line-height: 1.04;
+  text-transform: uppercase;
+}
+.wedding-special-price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin-top: 20px;
+}
+.wedding-special-price strong { color: var(--gold-light); font-family: 'IBM Plex Mono', monospace; font-size: clamp(34px, 6vw, 54px); }
+.wedding-special-was { color: var(--muted-light); font-size: 14px; text-decoration: line-through; }
+.wedding-special-saving {
+  padding: 6px 9px;
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.wedding-special-content { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; padding: clamp(20px, 4vw, 34px); }
+.wedding-special-section-title { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.wedding-special-section-title > span { color: var(--gold-deep); font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 700; }
+.wedding-special-section-title h3 { margin: 0; font-family: 'Anton', sans-serif; font-size: 18px; font-weight: 400; text-transform: uppercase; }
+.wedding-special-includes ul { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.wedding-special-includes li { display: grid; gap: 3px; padding: 10px 0; border-top: 1px solid var(--line); }
+.wedding-special-includes li b { font-size: 13px; }
+.wedding-special-includes li span { color: var(--muted-dark); font-size: 12px; line-height: 1.45; }
+.wedding-special-payment-steps { display: grid; gap: 8px; }
+.wedding-special-payment-steps > div { display: grid; gap: 7px; padding: 12px; border-left: 3px solid var(--gold); background: var(--paper-2); }
+.wedding-special-payment-steps span { color: var(--muted-dark); font-size: 11px; line-height: 1.4; }
+.wedding-special-payment-steps strong { font-family: 'IBM Plex Mono', monospace; font-size: 19px; }
+.wedding-special-notes { grid-column: 1 / -1; display: grid; grid-template-columns: .7fr 1.3fr; gap: 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+.wedding-special-notes p { display: grid; gap: 4px; margin: 0; }
+.wedding-special-notes b { color: var(--gold-deep); font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; }
+.wedding-special-notes span { font-size: 12px; line-height: 1.5; }
+.wedding-special-footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 18px clamp(20px, 4vw, 34px); background: var(--ink); color: var(--paper); }
+.wedding-special-footer p { display: grid; gap: 3px; margin: 0; }
+.wedding-special-footer p span { color: var(--muted-light); font-size: 10px; text-transform: uppercase; }
+.wedding-special-footer p strong { color: var(--gold-light); font-size: 16px; }
+.wedding-special-cta { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; padding: 10px 16px; background: var(--gold); color: var(--ink); font-size: 12px; font-weight: 800; text-decoration: none; text-transform: uppercase; }
+.wedding-special-cta:hover { background: var(--gold-light); }
+@keyframes wedding-special-arrive { from { opacity: 0; transform: translateY(16px) scale(.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@media (max-width: 600px) {
+  .wedding-special-teaser { width: min(172px, calc(100vw - 28px)); }
+  .wedding-special-teaser-copy { padding: 9px 10px 11px; }
+  .wedding-special-teaser-copy strong { font-size: 12px; }
+  .wedding-special-teaser-copy > span { font-size: 10px; }
+  .wedding-special-content { grid-template-columns: 1fr; gap: 22px; }
+  .wedding-special-notes { grid-column: auto; }
+  .wedding-special-dialog { max-height: 94vh; }
+  .wedding-special-topline { font-size: 9px; }
+  .wedding-special-footer { align-items: stretch; flex-direction: column; }
+  .wedding-special-cta { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wedding-special-teaser { animation: none; }
+}
