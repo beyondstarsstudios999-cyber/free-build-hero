@@ -4,4 +4,4 @@
 - [x] Add the “Creative by BeyondStars” portfolio page with separate portrait, square, and widescreen sections.
 - [x] Include all eleven uploaded videos and link the portfolio from the website navigation.
 - [x] Verify the portfolio page and its videos on desktop and mobile.
-- [ ] Add a delayed wedding-special teaser using the first uploaded image and a detailed, clickable offer popup from the second image's information; update expiry to 6 January 2027.
+- [x] Add a delayed wedding-special teaser using the first uploaded image and a detailed, clickable offer popup from the second image's information; update expiry to 6 January 2027.
