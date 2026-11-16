@@ -521,7 +521,7 @@ function WeddingSpecialPromotion() {
                   <li><b>Cinematic wedding film</b><span>20-minute edit</span></li>
                   <li><b>Drone shots</b><span>Weather, venue permission and safe flying conditions permitting</span></li>
                   <li><b>Wedding photographs</b><span>150 high-resolution, professionally colour-graded photos</span></li>
-                  <li><b>Custom-designed cover</b><span>AI print-ready design</span></li>
+                  <li><b>Custom-designed A1 cover</b><span>One A1 print-ready cover</span></li>
                   <li><b>Social highlight reel</b><span>1-minute edited reel</span></li>
                 </ul>
               </section>

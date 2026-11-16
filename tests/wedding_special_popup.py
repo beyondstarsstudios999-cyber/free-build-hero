@@ -27,6 +27,7 @@ async def main():
             "Maximum of 6 hours",
             "20-minute edit",
             "150 high-resolution, professionally colour-graded photos",
+            "One A1 print-ready cover",
             "R1 500",
             "R3 000",
             "R2 000",
