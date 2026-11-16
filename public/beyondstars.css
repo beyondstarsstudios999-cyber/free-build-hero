@@ -1260,8 +1260,9 @@ nav.gallery-back a:hover{ text-decoration:underline; }
 .wedding-special-teaser {
   position: fixed;
   z-index: 80;
-  left: clamp(14px, 2.5vw, 30px);
-  bottom: clamp(14px, 2.5vw, 30px);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
   width: min(224px, calc(100vw - 28px));
   overflow: hidden;
   border: 1px solid color-mix(in oklab, var(--gold) 72%, var(--paper));
@@ -1428,7 +1429,7 @@ nav.gallery-back a:hover{ text-decoration:underline; }
 .wedding-special-footer p strong { color: var(--gold-light); font-size: 16px; }
 .wedding-special-cta { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; padding: 10px 16px; background: var(--gold); color: var(--ink); font-size: 12px; font-weight: 800; text-decoration: none; text-transform: uppercase; }
 .wedding-special-cta:hover { background: var(--gold-light); }
-@keyframes wedding-special-arrive { from { opacity: 0; transform: translateY(16px) scale(.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes wedding-special-arrive { from { opacity: 0; scale: .96; } to { opacity: 1; scale: 1; } }
 @media (max-width: 600px) {
   .wedding-special-teaser { width: min(172px, calc(100vw - 28px)); }
   .wedding-special-teaser-copy { padding: 9px 10px 11px; }
