@@ -1406,6 +1406,7 @@ nav.gallery-back a:hover{ text-decoration:underline; }
   text-transform: uppercase;
 }
 .wedding-special-content { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; padding: clamp(20px, 4vw, 34px); }
+.wedding-special-content > section { padding: 0; }
 .wedding-special-section-title { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
 .wedding-special-section-title > span { color: var(--gold-deep); font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 700; }
 .wedding-special-section-title h3 { margin: 0; font-family: 'Anton', sans-serif; font-size: 18px; font-weight: 400; text-transform: uppercase; }
