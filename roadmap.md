@@ -5,3 +5,4 @@
 - [x] Include all eleven uploaded videos and link the portfolio from the website navigation.
 - [x] Verify the portfolio page and its videos on desktop and mobile.
 - [x] Add a delayed wedding-special teaser using the first uploaded image and a detailed, clickable offer popup from the second image's information; update expiry to 6 January 2027.
+- [x] Center the delayed wedding offer teaser and add a soft popup sound that respects browser audio permissions.

@@ -387,6 +387,42 @@ function WeddingSpecialPromotion() {
   const [dismissed, setDismissed] = useState(false);
   const [detailsOpen, setDetailsOpen] = useState(false);
   const dialogRef = useRef<HTMLDivElement | null>(null);
+  const popupAudioRef = useRef<AudioContext | null>(null);
+
+  useEffect(() => {
+    const unlockAudio = () => {
+      if (popupAudioRef.current || !window.AudioContext) return;
+      const context = new window.AudioContext();
+      popupAudioRef.current = context;
+      void context.resume();
+    };
+    window.addEventListener("pointerdown", unlockAudio);
+    window.addEventListener("keydown", unlockAudio);
+    return () => {
+      window.removeEventListener("pointerdown", unlockAudio);
+      window.removeEventListener("keydown", unlockAudio);
+      void popupAudioRef.current?.close();
+      popupAudioRef.current = null;
+    };
+  }, []);
+
+  const playPopupSound = () => {
+    const context = popupAudioRef.current;
+    if (!context || context.state !== "running") return;
+    const now = context.currentTime;
+    const oscillator = context.createOscillator();
+    const gain = context.createGain();
+    oscillator.type = "sine";
+    oscillator.frequency.setValueAtTime(660, now);
+    oscillator.frequency.exponentialRampToValueAtTime(360, now + 0.14);
+    gain.gain.setValueAtTime(0.0001, now);
+    gain.gain.exponentialRampToValueAtTime(0.09, now + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.18);
+    oscillator.connect(gain);
+    gain.connect(context.destination);
+    oscillator.start(now);
+    oscillator.stop(now + 0.2);
+  };
 
   useEffect(() => {
     try {
@@ -396,6 +432,7 @@ function WeddingSpecialPromotion() {
     }
     const timer = window.setTimeout(() => {
       setVisible(true);
+      playPopupSound();
       try {
         window.sessionStorage.setItem("beyondstars-wedding-special-shown", "yes");
       } catch {
@@ -458,7 +495,10 @@ function WeddingSpecialPromotion() {
             type="button"
             variant="ghost"
             className="wedding-special-trigger"
-            onClick={() => setDetailsOpen(true)}
+            onClick={() => {
+              playPopupSound();
+              setDetailsOpen(true);
+            }}
             aria-haspopup="dialog"
             aria-label="Open the R6,500 Gauteng wedding special"
           >
