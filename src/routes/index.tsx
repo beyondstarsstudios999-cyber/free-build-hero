@@ -232,6 +232,40 @@ function HeroCarousel() {
   );
 }
 
+function HeroVideo() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      video.pause();
+      return;
+    }
+    void video.play().catch(() => {});
+  }, []);
+
+  return (
+    <section className="video-hero" aria-label="BeyondStars Studios showreel">
+      <video
+        ref={videoRef}
+        className="video-hero-media"
+        poster="/assets/hero-rider-poster.webp"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        disablePictureInPicture
+        aria-hidden="true"
+      >
+        <source src="/assets/hero-rider.webm" type="video/webm" />
+        <source src="/assets/hero-rider.mp4" type="video/mp4" />
+      </video>
+    </section>
+  );
+}
+
 function IntroAnimation() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -668,7 +702,7 @@ function Index() {
       </header>
 
       <main id="top">
-        <HeroCarousel />
+        <HeroVideo />
 
         <StudioIntro onQuote={() => openQuote()} />
 
@@ -737,6 +771,8 @@ function Index() {
             </div>
           </div>
         </section>
+
+        <HeroCarousel />
 
         <section id="design">
           <div className="wrap">
