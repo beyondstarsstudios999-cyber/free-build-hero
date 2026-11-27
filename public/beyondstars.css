@@ -718,25 +718,10 @@
 
   /* ---------- BOOKING / PAYMENT ---------- */
   .booking{
-    --booking-bg-opacity:0.2;
-    position:relative;
-    isolation:isolate;
-    overflow:hidden;
     background:var(--navy);
     color:var(--paper);
     border-top:1px solid var(--line-dark);
     padding:clamp(56px,9vw,96px) 0;
-  }
-  .booking::before{
-    content:"";
-    position:absolute; inset:0; z-index:-2;
-    background:url("/assets/beyondstars-bg.webp") center/cover no-repeat;
-    opacity:var(--booking-bg-opacity);
-  }
-  .booking::after{
-    content:"";
-    position:absolute; inset:0; z-index:-1;
-    background:linear-gradient(to bottom, rgba(21,44,82,0.55) 0%, rgba(21,44,82,0.15) 50%, rgba(21,44,82,0.55) 100%);
   }
   .booking-grid{
     display:grid;
