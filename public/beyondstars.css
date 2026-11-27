@@ -156,12 +156,12 @@
   .video-hero-pill b{ font-weight:800; }
   .video-hero-title{
     margin:0;
-    font-family:'Open Sans',system-ui,sans-serif;
+    font-family:'Inter','Helvetica Neue',Arial,sans-serif;
     font-weight:800;
     font-size:clamp(14px,4.1vw,76px);
-    line-height:1.04;
+    line-height:1;
     text-transform:uppercase;
-    letter-spacing:-0.01em;
+    letter-spacing:-0.055em;
   }
   .vh-line{ display:block; white-space:nowrap; }
   .vh-script{
@@ -169,9 +169,11 @@
     font-style:normal;
     font-weight:500;
     text-transform:none;
-    font-size:1.25em;
+    color:#F6BF45;
+    font-size:1.4em;
+    line-height:.8;
     letter-spacing:0;
-    margin-right:.12em;
+    margin-right:.1em;
   }
 
   /* ---------- MEDIA PORTAL HERO ---------- */
