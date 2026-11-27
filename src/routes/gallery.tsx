@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { FloatingWhatsApp } from "../components/FloatingWhatsApp";
 
 
 export const Route = createFileRoute("/gallery")({
@@ -110,6 +111,7 @@ function Gallery() {
           <span>© 2026 BeyondStars Studios. Prices in ZAR, valid for the 2026 season.</span>
         </div>
       </footer>
+      <FloatingWhatsApp />
     </>
   );
 }

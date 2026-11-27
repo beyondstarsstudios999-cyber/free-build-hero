@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { FloatingWhatsApp } from "../components/FloatingWhatsApp";
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import type { AnimationItem } from "lottie-web";
@@ -232,7 +233,7 @@ function HeroCarousel() {
   );
 }
 
-function HeroVideo() {
+function HeroVideo({ onQuote }: { onQuote: () => void }) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -262,6 +263,24 @@ function HeroVideo() {
         <source src="/assets/hero-rider.webm" type="video/webm" />
         <source src="/assets/hero-rider.mp4" type="video/mp4" />
       </video>
+      <div className="video-hero-shade" aria-hidden="true" />
+      <div className="video-hero-copy">
+        <p className="video-hero-eyebrow">BeyondStars Studios</p>
+        <h1 className="video-hero-title">
+          Design, shot and framed <span>beyond the usual</span>
+        </h1>
+        <p className="video-hero-sub">
+          Graphic design, photography, videography and weddings — priced plainly.
+        </p>
+      </div>
+      <div className="video-hero-actions">
+        <button className="intro-button intro-button-gold" onClick={onQuote}>
+          Get a quotation
+        </button>
+        <a className="intro-button video-hero-ghost" href="#design">
+          See the price list
+        </a>
+      </div>
     </section>
   );
 }
@@ -702,7 +721,7 @@ function Index() {
       </header>
 
       <main id="top">
-        <HeroVideo />
+        <HeroVideo onQuote={() => openQuote()} />
 
         <StudioIntro onQuote={() => openQuote()} />
 
@@ -1059,10 +1078,7 @@ function Index() {
         </div>
       </footer>
 
-      <a className="whatsapp-float" href={WA_LINK} target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-        <img src={WHATSAPP_ICON_URL} alt="" />
-        <span>WhatsApp us</span>
-      </a>
+      <FloatingWhatsApp />
 
       <WeddingSpecialPromotion />
       {quoteOpen && <QuoteModal onClose={() => setQuoteOpen(false)} preselect={quotePreselect} />}
