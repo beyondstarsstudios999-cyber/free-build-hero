@@ -130,6 +130,64 @@
     .video-hero-media{ aspect-ratio:16/9; max-height:none; }
   }
 
+  .video-hero-shade{
+    position:absolute; inset:0; pointer-events:none;
+    background:
+      linear-gradient(to top, rgba(5,10,20,0.82) 0%, rgba(5,10,20,0.45) 32%, rgba(5,10,20,0) 62%),
+      linear-gradient(to right, rgba(5,10,20,0.5) 0%, rgba(5,10,20,0) 55%);
+  }
+  .video-hero-copy{
+    position:absolute; left:0; right:0; bottom:0;
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 24px clamp(76px,9vw,120px);
+    color:var(--paper);
+    text-shadow:0 2px 14px rgba(5,10,20,0.55);
+  }
+  .video-hero-eyebrow{
+    margin:0 0 10px;
+    font:600 13px/1 'IBM Plex Mono',monospace;
+    letter-spacing:.18em; text-transform:uppercase;
+    color:var(--gold-light);
+  }
+  .video-hero-title{
+    margin:0;
+    font-family:'Anton','Inter',sans-serif;
+    font-weight:400;
+    font-size:clamp(30px,5.6vw,72px);
+    line-height:1.02;
+    letter-spacing:.01em;
+    text-transform:uppercase;
+    max-width:14em;
+  }
+  .video-hero-title span{ color:var(--gold); }
+  .video-hero-sub{
+    margin:14px 0 0;
+    max-width:34em;
+    font:500 clamp(14px,1.5vw,18px)/1.45 'Inter',system-ui,sans-serif;
+    color:var(--paper);
+  }
+  .video-hero-actions{
+    position:absolute; left:50%; bottom:clamp(16px,3.5vw,40px);
+    transform:translateX(-50%);
+    display:flex; flex-wrap:nowrap; justify-content:center; gap:12px;
+    z-index:2; white-space:nowrap;
+  }
+  .video-hero-ghost{
+    background:rgba(243,238,225,0.12);
+    color:var(--paper);
+    border:2px solid rgba(243,238,225,0.7);
+    backdrop-filter:blur(4px);
+  }
+  .video-hero-ghost:hover{ background:var(--paper); color:var(--ink); }
+  @media (max-width:700px){
+    .video-hero-sub{ display:none; }
+    .video-hero-actions{ gap:8px; bottom:14px; }
+    .video-hero-actions .intro-button{ padding:10px 16px; font-size:12px; }
+    .video-hero-title{ font-size:clamp(24px,8vw,34px); }
+    .video-hero-copy{ padding-bottom:64px; }
+  }
+
   /* ---------- MEDIA PORTAL HERO ---------- */
   .media-hero{
     position:relative;
@@ -734,7 +792,7 @@
 
   /* ---------- WHATSAPP ---------- */
   .whatsapp-float{
-    position:fixed; right:20px; bottom:20px; z-index:60;
+    position:fixed; right:20px; bottom:calc(20px + env(safe-area-inset-bottom, 0px)); z-index:60;
     display:inline-flex; align-items:center; gap:10px;
     background:#1fae54;
     color:#fff;
@@ -747,6 +805,16 @@
     transition:transform .2s ease, box-shadow .2s ease;
   }
   .whatsapp-float:hover{ transform:translateY(-3px); box-shadow:0 16px 34px -8px rgba(0,0,0,0.55); }
+  .whatsapp-float::before{
+    content:""; position:absolute; inset:0; border-radius:inherit; z-index:-1;
+    background:#1fae54;
+    animation:wa-pulse 2.4s ease-out infinite;
+  }
+  @keyframes wa-pulse{
+    0%{ transform:scale(1); opacity:.55; }
+    70%,100%{ transform:scale(1.35); opacity:0; }
+  }
+  @media (prefers-reduced-motion: reduce){ .whatsapp-float::before{ animation:none; opacity:0; } }
   .whatsapp-float img{ width:34px; height:34px; display:block; border-radius:50%; }
   .cc-whatsapp{ display:inline-flex; align-items:center; gap:10px; }
   .cc-whatsapp img{ width:26px; height:26px; display:block; }
