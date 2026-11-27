@@ -271,24 +271,9 @@ function HeroVideo() {
         <h1 className="video-hero-title">
           <span className="vh-line">Design, shot and framed</span>
           <span className="vh-line">
-            <em className="vh-script">Beyond</em> the usual
+            <em className="vh-script">Beyond</em> the usual.
           </span>
         </h1>
-        <div className="video-hero-rule" aria-hidden="true" />
-        <p className="video-hero-sub">
-          Graphic design, vfx
-          <br />
-          photography, Cinematography
-          <br />
-          and weddings — priced plainly.
-        </p>
-        <Link to="/gallery" className="video-hero-cta">
-          View Gallery
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="12" fill="#111" />
-            <path d="M6 12h11M12.5 7l5 5-5 5" fill="none" stroke="#F6BF45" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </Link>
       </div>
     </section>
   );
