@@ -108,6 +108,28 @@
   .nav-cta:hover{ background:var(--gold-light); }
   .nav-toggle{ display:none; }
 
+  /* ---------- VIDEO HERO ---------- */
+  .video-hero{
+    position:relative;
+    z-index:2;
+    width:100%;
+    background:#000;
+    overflow:hidden;
+    padding:0;
+  }
+  .video-hero-media{
+    display:block;
+    width:100%;
+    aspect-ratio:16/9;
+    max-height:92vh;
+    object-fit:cover;
+    object-position:center;
+    background:#000;
+  }
+  @media (max-width:700px){
+    .video-hero-media{ aspect-ratio:16/9; max-height:none; }
+  }
+
   /* ---------- MEDIA PORTAL HERO ---------- */
   .media-hero{
     position:relative;
