@@ -30,7 +30,7 @@ export const Route = createFileRoute("/")({
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script:wght@700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@500&family=Dancing+Script:wght@700&family=Open+Sans:wght@400;600;800&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap",
       },
       { rel: "stylesheet", href: "/beyondstars.css" },
     ],
@@ -233,7 +233,7 @@ function HeroCarousel() {
   );
 }
 
-function HeroVideo({ onQuote }: { onQuote: () => void }) {
+function HeroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -265,21 +265,30 @@ function HeroVideo({ onQuote }: { onQuote: () => void }) {
       </video>
       <div className="video-hero-shade" aria-hidden="true" />
       <div className="video-hero-copy">
-        <p className="video-hero-eyebrow">BeyondStars Studios</p>
-        <h1 className="video-hero-title">
-          Design, shot and framed <span>beyond the usual</span>
-        </h1>
-        <p className="video-hero-sub">
-          Graphic design, photography, videography and weddings — priced plainly.
+        <p className="video-hero-pill">
+          <b>BeyondStars</b> Studios
         </p>
-      </div>
-      <div className="video-hero-actions">
-        <button className="intro-button intro-button-gold" onClick={onQuote}>
-          Get a quotation
-        </button>
-        <a className="intro-button video-hero-ghost" href="#design">
-          See the price list
-        </a>
+        <h1 className="video-hero-title">
+          <span className="vh-line">Design, shot and framed</span>
+          <span className="vh-line">
+            <em className="vh-script">Beyond</em> the usual
+          </span>
+        </h1>
+        <div className="video-hero-rule" aria-hidden="true" />
+        <p className="video-hero-sub">
+          Graphic design, vfx
+          <br />
+          photography, Cinematography
+          <br />
+          and weddings — priced plainly.
+        </p>
+        <Link to="/gallery" className="video-hero-cta">
+          View Gallery
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="12" fill="#111" />
+            <path d="M6 12h11M12.5 7l5 5-5 5" fill="none" stroke="#F6BF45" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </Link>
       </div>
     </section>
   );
@@ -721,7 +730,7 @@ function Index() {
       </header>
 
       <main id="top">
-        <HeroVideo onQuote={() => openQuote()} />
+        <HeroVideo />
 
         <StudioIntro onQuote={() => openQuote()} />
 
