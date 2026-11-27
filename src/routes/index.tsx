@@ -269,7 +269,7 @@ function HeroVideo() {
           <b>BeyondStars</b> Studios
         </p>
         <h1 className="video-hero-title">
-          <span className="vh-line">Design, shot and framed</span>
+          <span className="vh-line">Design, shot &amp; framed</span>
           <span className="vh-line">
             <em className="vh-script">Beyond</em> the usual.
           </span>
