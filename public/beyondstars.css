@@ -133,59 +133,74 @@
   .video-hero-shade{
     position:absolute; inset:0; pointer-events:none;
     background:
-      linear-gradient(to top, rgba(5,10,20,0.82) 0%, rgba(5,10,20,0.45) 32%, rgba(5,10,20,0) 62%),
-      linear-gradient(to right, rgba(5,10,20,0.5) 0%, rgba(5,10,20,0) 55%);
+      radial-gradient(ellipse at center, rgba(5,10,20,0.62) 0%, rgba(5,10,20,0.42) 45%, rgba(5,10,20,0.18) 100%);
   }
   .video-hero-copy{
-    position:absolute; left:0; right:0; bottom:0;
-    max-width:var(--maxw);
-    margin:0 auto;
-    padding:0 24px clamp(76px,9vw,120px);
-    color:var(--paper);
-    text-shadow:0 2px 14px rgba(5,10,20,0.55);
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+    padding:24px;
+    color:#fff;
+    font-family:'Open Sans','Inter',system-ui,sans-serif;
+    text-shadow:0 2px 14px rgba(5,10,20,0.6);
   }
-  .video-hero-eyebrow{
-    margin:0 0 10px;
-    font:600 13px/1 'IBM Plex Mono',monospace;
-    letter-spacing:.18em; text-transform:uppercase;
-    color:var(--gold-light);
+  .video-hero-pill{
+    margin:0 0 clamp(8px,1.2vw,14px);
+    padding:clamp(6px,0.8vw,10px) clamp(22px,3.4vw,52px);
+    border-radius:999px;
+    background:#F6BF45;
+    color:#111;
+    font:400 clamp(15px,2.1vw,28px)/1.1 'Open Sans',system-ui,sans-serif;
+    text-shadow:none;
   }
+  .video-hero-pill b{ font-weight:800; }
   .video-hero-title{
     margin:0;
-    font-family:'Anton','Inter',sans-serif;
-    font-weight:400;
-    font-size:clamp(30px,5.6vw,72px);
-    line-height:1.02;
-    letter-spacing:.01em;
+    font-family:'Open Sans',system-ui,sans-serif;
+    font-weight:800;
+    font-size:clamp(24px,5.4vw,74px);
+    line-height:1.04;
     text-transform:uppercase;
-    max-width:14em;
+    letter-spacing:-0.01em;
   }
-  .video-hero-title span{ color:var(--gold); }
+  .vh-line{ display:block; white-space:nowrap; }
+  .vh-script{
+    font-family:'Caveat','Dancing Script',cursive;
+    font-style:normal;
+    font-weight:500;
+    text-transform:none;
+    font-size:1.25em;
+    letter-spacing:0;
+    margin-right:.12em;
+  }
+  .video-hero-rule{
+    width:min(52%,440px);
+    margin:clamp(6px,1vw,12px) 0 clamp(6px,1vw,12px);
+    border-top:2px dashed rgba(255,255,255,0.85);
+  }
   .video-hero-sub{
-    margin:14px 0 0;
-    max-width:34em;
-    font:500 clamp(14px,1.5vw,18px)/1.45 'Inter',system-ui,sans-serif;
-    color:var(--paper);
+    margin:0;
+    font-weight:400;
+    font-size:clamp(14px,2.5vw,34px);
+    line-height:1.12;
   }
-  .video-hero-actions{
-    position:absolute; left:50%; bottom:clamp(16px,3.5vw,40px);
-    transform:translateX(-50%);
-    display:flex; flex-wrap:nowrap; justify-content:center; gap:12px;
-    z-index:2; white-space:nowrap;
+  .video-hero-cta{
+    margin-top:clamp(12px,2vw,26px);
+    display:inline-flex; align-items:center; gap:.5em;
+    padding:clamp(8px,1vw,12px) clamp(26px,3.6vw,52px);
+    border-radius:999px;
+    background:#F6BF45;
+    color:#111;
+    font:800 clamp(15px,2.3vw,30px)/1 'Open Sans',system-ui,sans-serif;
+    text-decoration:none;
+    text-shadow:none;
+    transition:transform .2s ease, background .2s ease, box-shadow .2s ease;
   }
-  .video-hero-ghost{
-    background:rgba(243,238,225,0.12);
-    color:var(--paper);
-    border:2px solid rgba(243,238,225,0.7);
-    backdrop-filter:blur(4px);
-  }
-  .video-hero-ghost:hover{ background:var(--paper); color:var(--ink); }
-  @media (max-width:700px){
-    .video-hero-sub{ display:none; }
-    .video-hero-actions{ gap:8px; bottom:14px; }
-    .video-hero-actions .intro-button{ padding:10px 16px; font-size:12px; }
-    .video-hero-title{ font-size:clamp(24px,8vw,34px); }
-    .video-hero-copy{ padding-bottom:64px; }
+  .video-hero-cta svg{ width:1.15em; height:1.15em; flex:none; }
+  .video-hero-cta:hover{ background:#FFD066; transform:translateY(-2px); box-shadow:0 10px 22px rgba(0,0,0,.35); }
+  @media (max-width:480px){
+    .video-hero-copy{ padding:12px; }
+    .video-hero-rule{ width:70%; }
   }
 
   /* ---------- MEDIA PORTAL HERO ---------- */
